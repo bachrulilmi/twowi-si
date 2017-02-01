@@ -150,6 +150,20 @@ use yii\helpers\Html;
     <th height="50px"></th>
   </tr>
   <tr>
+    <th colspan="3" style="color:#1435F5"><h4>Kerabat Dekat</h4></th>
+    
+  </tr>
+  <tr>
+    <th>Nama Kerabat</th>
+    <th>:</th> 
+    <th height="50px"></th>
+  </tr>
+  <tr>
+    <th>No Telp Kerabat</th>
+    <th>:</th> 
+    <th height="50px"></th>
+  </tr>
+  <tr>
     <th colspan="3" style="color:#1435F5"><h4>Kemampuan</h4></th>
     
   </tr>

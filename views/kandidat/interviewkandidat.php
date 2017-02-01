@@ -94,6 +94,9 @@ $this->title = 'Interview Kandidat';
 		<?= $form->field($model, 'nmbpk') ->label('Nama Bapak')?>
         <?= $form->field($model, 'nmibu') ->label('Nama Ibu')?>
 		<?= $form->field($model, 'pkrjortu') ->label('Pekerjaan Orang Tua')?>
+		<h2>Kerabat Dekat</h2>
+		<?= $form->field($model, 'nama_kerabat') ->label('Nama Kerabat')?>
+        <?= $form->field($model, 'telp_kerabat') ->label('No Telp Kerabat')?>
 		<h2>Kemampuan Komputer</h2>
 		<?= $form->field($model, 'msoffice')->dropdownList([
 			'Ya' => 'Ya', 

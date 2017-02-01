@@ -151,6 +151,20 @@ use yii\helpers\Html;
     <th><?= Html::encode($model->pkrjortu) ?></th>
   </tr>
   <tr>
+    <th colspan="3" style="color:#1435F5"><h4>Kerabat Dekat</h4></th>
+    
+  </tr>
+  <tr>
+    <th>Nama Kerabat</th>
+    <th>:</th> 
+    <th><?= Html::encode($model->nama_kerabat) ?></th>
+  </tr>
+  <tr>
+    <th>No Telp Kerabat</th>
+    <th>:</th> 
+    <th><?= Html::encode($model->telp_kerabat) ?></th>
+  </tr>
+  <tr>
     <th colspan="3" style="color:#1435F5"><h4>Kemampuan</h4></th>
     
   </tr>
