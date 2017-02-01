@@ -43,6 +43,7 @@ use Yii;
  * @property string $sim
  * @property string $fotokandidat
  * @property string $jabatan
+ * @property string $refferer
  * @property string $flag_interview
  * @property string $flag_member
  * @property string $flag_aktif
@@ -69,7 +70,7 @@ class Kandidat extends \yii\db\ActiveRecord
             [['kandidatid'], 'string', 'max' => 10],
             [['namalengkap', 'tempatlahir', 'namasekolah', 'jurusan', 'nmbpk', 'nmibu', 'pkrjortu', 'fotokandidat', 'jabatan'], 'string', 'max' => 100],
             [['jenkel', 'status', 'kodepos', 'agama', 'lamabkrj1', 'lamabkrj2', 'lamabkrj3', 'telp_kerabat', 'msoffice', 'photosh', 'autoca', 'inggris', 'mengemudi', 'sim', 'flag_interview', 'flag_member', 'flag_aktif'], 'string', 'max' => 20],
-            [['notelp', 'namacomp1', 'jabatan1', 'namacomp2', 'jabatan2', 'namacomp3', 'jabatan3', 'nama_kerabat', 'others'], 'string', 'max' => 50],
+            [['notelp', 'namacomp1', 'jabatan1', 'namacomp2', 'jabatan2', 'namacomp3', 'jabatan3', 'nama_kerabat', 'others', 'refferer'], 'string', 'max' => 50],
         ];
     }
 
@@ -115,6 +116,7 @@ class Kandidat extends \yii\db\ActiveRecord
             'sim' => 'Sim',
             'fotokandidat' => 'Fotokandidat',
             'jabatan' => 'Jabatan',
+            'refferer' => 'Refferer',
             'flag_interview' => 'Flag Interview',
             'flag_member' => 'Flag Member',
             'flag_aktif' => 'Flag Aktif',

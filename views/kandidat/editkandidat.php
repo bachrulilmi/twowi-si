@@ -78,6 +78,7 @@ $this->title = 'Edit Kandidat Kandidat';
 							)->label('Agama');?>
 							<?= $form->field($model, 'namasekolah') ->label('Nama Sekolah')?>
 							<?= $form->field($model, 'jurusan') ->label('Jurusan')?>
+							<?= $form->field($model, 'refferer') ->label('Info Lowongan Kerja')?>
 							<h2>Perusahaan 1</h2>
 							<?= $form->field($model, 'namacomp1') ->label('Nama Perusahaan')?>
 							<?= $form->field($model, 'jabatan1') ->label('Jabatan')?>

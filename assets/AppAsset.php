@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'twi/css/screen.css',
     ];
     public $js = [
+		'twi/js/myjs.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -74,6 +74,11 @@ use yii\helpers\Html;
     <th><?= Html::encode($model->jurusan) ?></th>
   </tr>
   <tr>
+    <th>Info Lowongan Kerja</th>
+    <th>:</th> 
+    <th><?= Html::encode($model->refferer) ?></th>
+  </tr>
+  <tr>
     <th colspan="3" style="color:#1435F5"><h4>Perusahaan 1</h4></th>
     
   </tr>
