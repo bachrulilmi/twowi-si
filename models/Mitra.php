@@ -3,8 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\base\Model;
-use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "mitra".
@@ -14,15 +12,19 @@ use yii\web\UploadedFile;
  * @property string $namamitra
  * @property string $alamatmitra
  * @property string $namapic
+ * @property string $jabatanpic
  * @property string $telppic
  * @property string $emailpic
  * @property string $deskripsi
  * @property string $status
  * @property string $lampiran
+ * @property string $lampiran2
+ * @property string $lampiran3
+ * @property string $lampiran4
+ * @property string $lampiran5
  */
 class Mitra extends \yii\db\ActiveRecord
 {
-	//public $lampiran;
     /**
      * @inheritdoc
      */
@@ -37,13 +39,13 @@ class Mitra extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            //[['namamitra'], 'required'],
+            //[['mitraid', 'jabatanpic'], 'required'],
             [['mitraid', 'status'], 'string', 'max' => 10],
             [['namamitra', 'emailpic'], 'string', 'max' => 50],
-            [['alamatmitra', 'deskripsi'], 'string', 'max' => 255],
+            [['alamatmitra', 'deskripsi', 'lampiran', 'lampiran2', 'lampiran3', 'lampiran4', 'lampiran5'], 'string', 'max' => 255],
             [['namapic'], 'string', 'max' => 100],
+            [['jabatanpic'], 'string', 'max' => 20],
             [['telppic'], 'string', 'max' => 25],
-			//[['lampiran'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -58,22 +60,16 @@ class Mitra extends \yii\db\ActiveRecord
             'namamitra' => 'Namamitra',
             'alamatmitra' => 'Alamatmitra',
             'namapic' => 'Namapic',
+            'jabatanpic' => 'Jabatanpic',
             'telppic' => 'Telppic',
             'emailpic' => 'Emailpic',
             'deskripsi' => 'Deskripsi',
             'status' => 'Status',
             'lampiran' => 'Lampiran',
+            'lampiran2' => 'Lampiran2',
+            'lampiran3' => 'Lampiran3',
+            'lampiran4' => 'Lampiran4',
+            'lampiran5' => 'Lampiran5',
         ];
     }
-	/**
-	public function upload()
-    {
-        if ($this->validate()) {
-            $this->lampiran->saveAs('uploads/' . $this->lampiran->baseName . '.' . $this->lampiran->extension);
-            return true;
-        } else {
-			
-            return false;
-        }
-    }**/
 }

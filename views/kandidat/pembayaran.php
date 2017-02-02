@@ -69,8 +69,8 @@ $this->title = 'Pembayaran Kandidat';
 		
 		<?= $form->field($model2, 'viabayar')->dropdownList([
 			'Tunai' => 'Tunai', 
-			'DP' => 'DP',
-			'Potongan' => 'Potongan'
+			'DP' => 'DP'
+			
 			],
 			['prompt'=>'Pilih',
 				'onchange'=>'

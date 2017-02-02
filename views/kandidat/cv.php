@@ -89,7 +89,7 @@ use yii\helpers\Html;
     <th><?= Html::encode($model->namacomp1) ?></th>
   </tr>
   <tr>
-    <th>Jabatan</th>
+    <th>Posisi</th>
     <th>:</th> 
     <th><?= Html::encode($model->jabatan1) ?></th>
   </tr>
@@ -108,7 +108,7 @@ use yii\helpers\Html;
     <th><?= Html::encode($model->namacomp2) ?></th>
   </tr>
   <tr>
-    <th>Jabatan</th>
+    <th>Posisi</th>
     <th>:</th> 
     <th><?= Html::encode($model->jabatan2) ?></th>
   </tr>
@@ -127,7 +127,7 @@ use yii\helpers\Html;
     <th><?= Html::encode($model->namacomp3) ?></th>
   </tr>
   <tr>
-    <th>Jabatan</th>
+    <th>Posisi</th>
     <th>:</th> 
     <th><?= Html::encode($model->jabatan3) ?></th>
   </tr>
@@ -209,7 +209,7 @@ use yii\helpers\Html;
     <th><?= Html::encode($model->sim) ?></th>
   </tr>
   <tr>
-    <th>Jabatan</th>
+    <th>Posisi</th>
     <th>:</th> 
     <th><?= Html::encode($model->jabatan) ?></th>
   </tr>

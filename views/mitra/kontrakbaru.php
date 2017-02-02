@@ -48,6 +48,8 @@ $this->title = 'Kontrak Baru';
     ]); ?>
     	<?= $form->field($model, 'mitraid')->hiddenInput()->label(false)?>
     	<?= $form->field($model, 'namamitra')->textInput(['readonly' => true])->label('Nama Mitra') ?>
+    	<?= $form->field($model2, 'nokontrak') ->label('Nomor Kontrak/MoU')?>
+    	<?= $form->field($model2, 'ttd') ->label('Penandatangan Kontrak')?>
         <?= $form->field($model2, 'tahun')->textInput(['autofocus' => true])->label('Tahun Kontrak') ?>
 		<?= $form->field($model2, 'penjelasan') ->label('Keterangan')?>
 		<?= $form->field($model2, 'status')->dropdownList([

@@ -88,7 +88,7 @@ use yii\helpers\Html;
     <th height="50px"></th>
   </tr>
   <tr>
-    <th>Jabatan</th>
+    <th>Posisi</th>
     <th>:</th> 
     <th height="50px"></th>
   </tr>
@@ -107,7 +107,7 @@ use yii\helpers\Html;
     <th height="50px"></th>
   </tr>
   <tr>
-    <th>Jabatan</th>
+    <th>Posisi</th>
     <th>:</th> 
     <th height="50px"></th>
   </tr>
@@ -126,7 +126,7 @@ use yii\helpers\Html;
     <th height="50px"></th>
   </tr>
   <tr>
-    <th>Jabatan</th>
+    <th>Posisi</th>
     <th>:</th> 
     <th height="50px"></th>
   </tr>
@@ -208,7 +208,7 @@ use yii\helpers\Html;
     <th height="50px"></th>
   </tr>
   <tr>
-    <th>Jabatan</th>
+    <th>Posisi</th>
     <th>:</th> 
     <th height="50px"></th>
   </tr>

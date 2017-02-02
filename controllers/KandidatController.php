@@ -310,7 +310,9 @@ class KandidatController extends \yii\web\Controller
 			$model->flag_member = 'Y';
 			if($model2->save() && $model->save(false)){
 				
-				return $this->redirect(['kandidat/list-bayar']);
+				
+				return $this->render('selamatbergabung',['model' => $id]);
+				
 			}else{
 				return $this->render('listpembayaran', [
 					'model' => $model
@@ -428,6 +430,52 @@ class KandidatController extends \yii\web\Controller
 		
     // return the pdf output as per the destination setting
 		return $pdf->render(); 
+
+	}
+
+	public function actionTandaMember($id){
+
+		//return $this->render('tandamember');
+
+		$response = Yii::$app->response;
+		$response->format = \yii\web\Response::FORMAT_RAW;
+		$headers = Yii::$app->response->headers;
+		$headers->add('Content-Type', 'application/pdf');
+		// get your HTML raw content without any layouts or scripts
+		$kandidat = Kandidat::findOne($id);
+		//$jabatan = new TranJabatan();
+		
+		$content = $this->renderPartial('tandamember',['model' => $kandidat]);
+		
+    // setup kartik\mpdf\Pdf component
+		$pdf = new Pdf([
+        // set to use core fonts only
+			'mode' => Pdf::MODE_CORE, 
+        // A4 paper format
+			'format' => Pdf::FORMAT_A4, 
+        // portrait orientation
+			'orientation' => Pdf::ORIENT_PORTRAIT, 
+        // stream to browser inline
+			'destination' => Pdf::DEST_BROWSER, 
+        // your html content input
+			'content' => $content,  
+        // format content from your own css file if needed or use the
+        // enhanced bootstrap css built by Krajee for mPDF formatting 
+			'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+        // any css to be embedded if required
+			'cssInline' => '.kv-heading-1{font-size:18px}', 
+         // set mPDF properties on the fly
+			'options' => ['title' => 'Two Win Indonesia'],
+         // call mPDF methods on the fly
+			'methods' => [ 
+			'SetHeader'=>['Two Win Indonesia'], 
+			'SetFooter'=>['{PAGENO}'],
+			]
+			]);
+		
+    // return the pdf output as per the destination setting
+		return $pdf->render(); 
+
 	}
 
 

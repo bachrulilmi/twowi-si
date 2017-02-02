@@ -81,15 +81,15 @@ $this->title = 'Interview Kandidat';
 		<?= $form->field($model, 'refferer') ->label('Info Lowongan Kerja')?>
 		<h2>Perusahaan 1</h2>
 		<?= $form->field($model, 'namacomp1') ->label('Nama Perusahaan')?>
-        <?= $form->field($model, 'jabatan1') ->label('Jabatan')?>
+        <?= $form->field($model, 'jabatan1') ->label('Posisi')?>
 		<?= $form->field($model, 'lamabkrj1') ->label('Lama bekerja(Tahun)')?>
 		<h2>Perusahaan 2</h2>
 		<?= $form->field($model, 'namacomp2') ->label('Nama Perusahaan')?>
-        <?= $form->field($model, 'jabatan2') ->label('Jabatan')?>
+        <?= $form->field($model, 'jabatan2') ->label('Posisi')?>
 		<?= $form->field($model, 'lamabkrj2') ->label('Lama bekerja(Tahun)')?>
 		<h2>Perusahaan 3</h2>
 		<?= $form->field($model, 'namacomp3') ->label('Nama Perusahaan')?>
-        <?= $form->field($model, 'jabatan3') ->label('Jabatan')?>
+        <?= $form->field($model, 'jabatan3') ->label('Posisi')?>
 		<?= $form->field($model, 'lamabkrj3') ->label('Lama bekerja(Tahun)')?>
 		<h2>Biodata Orang Tua</h2>
 		<?= $form->field($model, 'nmbpk') ->label('Nama Bapak')?>
@@ -136,7 +136,7 @@ $this->title = 'Interview Kandidat';
 				'Security' => 'Security', 
 				'Cleaning Service' => 'Cleaning Service',
 				'Operator' => 'Operator'
-			])->label('Jabatan');
+			])->label('Posisi');
 		?>
 		
 		<?= $form->field($model, 'fotokandidat')->fileInput()->label('Foto Kandidat') ?>

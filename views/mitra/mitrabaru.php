@@ -41,10 +41,11 @@ $this->title = 'Tambah Mitra Baru';
 					<?= $form->field($model, 'namamitra')->textInput(['autofocus' => true])->label('Nama Mitra') ?>
 
 					<?= $form->field($model, 'alamatmitra') ->label('Alamat Mitra')?>
-					<?= $form->field($model, 'namapic') ->label('Nama PIC')?>
-					<?= $form->field($model, 'telppic') ->label('Telepon PIC')?>
-					<?= $form->field($model, 'emailpic') ->label('Email PIC')?>
-					<?= $form->field($model, 'deskripsi') ->label('PIC')?>
+					<?= $form->field($model, 'namapic') ->label('Nama PIC Mitra')?>
+					<?= $form->field($model, 'jabatanpic') ->label('Jabatan PIC Mitra')?>
+					<?= $form->field($model, 'telppic') ->label('Telepon PIC Mitra')?>
+					<?= $form->field($model, 'emailpic') ->label('Email PIC Mitra')?>
+					<?= $form->field($model, 'deskripsi') ->label('Keterangan')?>
 					<?= $form->field($model, 'status')->dropdownList([
 						'Aktif' => 'Aktif', 
 						'Non Aktif' => 'Non Aktif'

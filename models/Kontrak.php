@@ -14,6 +14,8 @@ use Yii;
  * @property string $tahun
  * @property string $status
  * @property string $periode
+ * @property string $nokontrak
+ * @property string $ttd
  */
 class Kontrak extends \yii\db\ActiveRecord
 {
@@ -35,6 +37,7 @@ class Kontrak extends \yii\db\ActiveRecord
             [['mitraid'], 'integer'],
             [['lampiran', 'penjelasan'], 'string', 'max' => 100],
             [['tahun', 'status', 'periode'], 'string', 'max' => 20],
+            [['nokontrak', 'ttd'], 'string', 'max' => 50],
         ];
     }
 
@@ -51,6 +54,8 @@ class Kontrak extends \yii\db\ActiveRecord
             'tahun' => 'Tahun',
             'status' => 'Status',
             'periode' => 'Periode',
+            'nokontrak' => 'Nokontrak',
+            'ttd' => 'Ttd',
         ];
     }
 }

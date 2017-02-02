@@ -48,6 +48,8 @@ $this->title = 'Ubah Kontrak';
 					]); ?>
 					<?= $form->field($mitra, 'id')->hiddenInput()->label(false)?>
 					<?= $form->field($mitra, 'namamitra')->textInput(['readonly' => true])->label('Nama Mitra') ?>
+					<?= $form->field($kontrak, 'nokontrak') ->label('Nomor Kontrak/MoU')?>
+    				<?= $form->field($kontrak, 'ttd') ->label('Penandatangan Kontrak')?>
 					<?= $form->field($kontrak, 'tahun')->textInput(['autofocus' => true])->label('Tahun Kontrak') ?>
 					<?= $form->field($kontrak, 'penjelasan') ->label('Keterangan')?>
 					<?= $form->field($kontrak, 'status')->dropdownList([
