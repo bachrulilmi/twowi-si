@@ -44,6 +44,7 @@ use Yii;
  * @property string $fotokandidat
  * @property string $jabatan
  * @property string $refferer
+ * @property string $date_add
  * @property string $flag_interview
  * @property string $flag_member
  * @property string $flag_aktif
@@ -65,7 +66,7 @@ class Kandidat extends \yii\db\ActiveRecord
     {
         return [
             [['namalengkap','jabatan','fotokandidat'], 'required'],
-            [['tanggallahir'], 'safe'],
+            [['tanggallahir', 'date_add'], 'safe'],
             [['alamat'], 'string'],
             [['kandidatid'], 'string', 'max' => 10],
             [['namalengkap', 'tempatlahir', 'namasekolah', 'jurusan', 'nmbpk', 'nmibu', 'pkrjortu', 'fotokandidat', 'jabatan'], 'string', 'max' => 100],
@@ -117,6 +118,7 @@ class Kandidat extends \yii\db\ActiveRecord
             'fotokandidat' => 'Fotokandidat',
             'jabatan' => 'Jabatan',
             'refferer' => 'Refferer',
+            'date_add' => 'Date Add',
             'flag_interview' => 'Flag Interview',
             'flag_member' => 'Flag Member',
             'flag_aktif' => 'Flag Aktif',

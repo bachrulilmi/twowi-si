@@ -87,6 +87,7 @@ $this->title = 'Database Kandidat';
 							echo '<a href="index.php?r=kandidat/history-bayar&id='.$kan->id.'" title="History Pembayaran" class="icon-history-bayar info-tooltip"></a>';
 						}
 					?>
+					<a href="index.php?r=kandidat/list-test&id=<?= $kan->id ?>" title="Input Nilai Test" class="icon-test info-tooltip"></a>
 					</td>
 				</tr>
 				<?php endforeach; ?>

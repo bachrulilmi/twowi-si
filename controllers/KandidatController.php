@@ -9,6 +9,7 @@ use app\models\TranJabatan;
 use app\models\Pembayaran;
 use app\models\MstBiaya;
 use app\models\Konfigurasi;
+use app\models\ReportTest;
 use yii\data\Pagination;
 use yii\web\UploadedFile;
 use yii\web\User;
@@ -39,6 +40,7 @@ class KandidatController extends \yii\web\Controller
 		$auto = $this->autoNumber();
 		$request = Yii::$app->request->post();
 		$kandidat->kandidatid = $auto;
+		$kandidat->date_add = date("Y-m-d");
 		if ($kandidat->load($request) && $kandidat->save(false)) {
 
 			//$session = Yii::$app->session;
@@ -428,6 +430,99 @@ class KandidatController extends \yii\web\Controller
 		return $pdf->render(); 
 	}
 
+
+	public function actionListTest($id){
+		$kandidat = Kandidat::findOne($id);
+		$query = ReportTest::find()
+		->where(['kandidatid' => $id])
+		->andWhere(['flag_aktif' => 'Y']);		
+
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count(),
+			]);
+
+		$test = $query->orderBy('id')
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+
+
+		return $this->render('listtest', [
+			'test' => $test,
+			'kandidat' => $kandidat,
+			'pagination' => $pagination,
+			]);
+	}
+
+	public function actionNewTest($id){
+		$test = new ReportTest();
+		$kandidat = $this->findModel($id);
+		return $this->render('newtest', ['model' => $kandidat, 'model2'=>$test]);
+	}
+
+	public function actionSimpanTest($id){
+		$model2 =  new ReportTest();
+
+
+		if ($model2->load(Yii::$app->request->post()) ) {
+			
+			
+			$model2->kandidatid=$id;
+			
+				
+				if($model2->save()){
+					
+					return $this->redirect(['kandidat/list-test','id' => $id]);
+				}else{
+					return ;
+				}
+			
+			
+
+		} else {
+			return ;
+		}
+	}
+
+	public function actionDisableTest($id){
+		$model = $this->findModelTest($id);
+		$model->flag_aktif = 'N';
+		if($model->save(false)){
+			return $this->redirect(Yii::$app->request->referrer);
+		}else{
+			return $this->render('error', ['model' => $model->errors]);
+		}
+	}
+
+	public function actionEditTest($id){
+		$test = $this->findModelTest($id);
+		$kandidat = $this->findModel($test->kandidatid);
+		return $this->render('edittest', ['test' => $test,'kandidat'=>$kandidat]);
+	}
+
+	public function actionUpdateTest($id,$kandidatid){
+		$model = $this->findModelTest($id);
+		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+			
+			
+			return $this->redirect(['kandidat/list-test','id' => $kandidatid]);	
+			
+
+		} else {
+			return ;
+		}
+	}
+
+	protected function findModelTest($id)
+	{
+		if (($model = ReportTest::findOne($id)) !== null) {
+			return $model;
+		} else {
+			throw new NotFoundHttpException('The requested page does not exist.');
+		}
+	}
+
 	public function actionDisable($id){
 		$model = $this->findModel($id);
 		$model->flag_aktif = 'N';
@@ -450,6 +545,8 @@ class KandidatController extends \yii\web\Controller
 			echo $harga->biaya;
 		}
 	}
+
+
 
 	public function actionCoba($id=18){
 		$kandidat = Kandidat::findOne($id);

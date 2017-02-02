@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 01 Feb 2017 pada 15.26
+-- Generation Time: 02 Feb 2017 pada 14.41
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -68,6 +68,7 @@ CREATE TABLE `kandidat` (
   `fotokandidat` varchar(100) DEFAULT NULL,
   `jabatan` varchar(100) DEFAULT NULL,
   `refferer` varchar(50) DEFAULT NULL,
+  `date_add` date DEFAULT NULL,
   `flag_interview` varchar(20) DEFAULT 'N',
   `flag_member` varchar(20) DEFAULT 'N',
   `flag_aktif` varchar(20) DEFAULT 'Y'
@@ -77,14 +78,16 @@ CREATE TABLE `kandidat` (
 -- Dumping data untuk tabel `kandidat`
 --
 
-INSERT INTO `kandidat` (`id`, `kandidatid`, `namalengkap`, `jenkel`, `status`, `tempatlahir`, `tanggallahir`, `alamat`, `kodepos`, `notelp`, `agama`, `namasekolah`, `jurusan`, `namacomp1`, `jabatan1`, `lamabkrj1`, `namacomp2`, `jabatan2`, `lamabkrj2`, `namacomp3`, `jabatan3`, `lamabkrj3`, `nmbpk`, `nmibu`, `pkrjortu`, `nama_kerabat`, `telp_kerabat`, `msoffice`, `photosh`, `autoca`, `others`, `inggris`, `mengemudi`, `sim`, `fotokandidat`, `jabatan`, `refferer`, `flag_interview`, `flag_member`, `flag_aktif`) VALUES
-(1, 'K1', 'Bachrul Ilmi', 'Laki-laki', 'Single', 'Surabaya', '1990-02-15', '', '', '', 'Katolik', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', 'iOPAsBW2AdTulips.jpg', 'Cleaning Service', NULL, 'Y', 'Y', 'Y'),
-(2, 'K2', 'Anton Timur', 'Laki-laki', 'Menikah', 'Jakarta Selatan', '1978-03-12', 'Ciledug', '', '', 'Katolik', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', 'mPqipBi75wLighthouse.jpg', 'Cleaning Service', NULL, 'Y', 'Y', 'Y'),
-(3, 'K3', 'Joko Anwar', 'Laki-laki', 'Menikah', 'Merauke', '1960-05-30', 'Jakarta', '', '081232123', 'Budha', 'Universitas Indonesia', 'Sastra Indonesia', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', 'wyTKoXfAcXHydrangeas.jpg', 'Cleaning Service', NULL, 'Y', 'N', 'Y'),
-(4, 'K4', 'Pakde', 'Perempuan', 'Pelajar', '', NULL, '', '', '', 'Katolik', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', '1V50uXivdGKoala.jpg', 'Cleaning Service', NULL, 'Y', 'N', 'Y'),
-(5, 'K5', 'Susilo', 'Laki-laki', 'Pelajar', '', NULL, '', '', '', 'Islam', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', 'ycAGjN_DLAChrysanthemum.jpg', 'Cleaning Service,Operator', NULL, 'Y', 'Y', 'Y'),
-(6, 'K6', 'Joko Bektio', 'Laki-laki', 'Single', 'Medan', '1990-02-17', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', 'eNsojtKTWUPenguins.jpg', 'Security', NULL, 'Y', 'N', 'Y'),
-(7, 'K7', 'Jengki Joko', 'Perempuan', 'Pelajar', '', NULL, '', '', '', 'Katolik', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Silo', '123983812', '', '', '', '', '', '', '', 'fIHIsPFTUfLighthouse.jpg', 'Cleaning Service,Operator', NULL, 'Y', 'N', 'Y');
+INSERT INTO `kandidat` (`id`, `kandidatid`, `namalengkap`, `jenkel`, `status`, `tempatlahir`, `tanggallahir`, `alamat`, `kodepos`, `notelp`, `agama`, `namasekolah`, `jurusan`, `namacomp1`, `jabatan1`, `lamabkrj1`, `namacomp2`, `jabatan2`, `lamabkrj2`, `namacomp3`, `jabatan3`, `lamabkrj3`, `nmbpk`, `nmibu`, `pkrjortu`, `nama_kerabat`, `telp_kerabat`, `msoffice`, `photosh`, `autoca`, `others`, `inggris`, `mengemudi`, `sim`, `fotokandidat`, `jabatan`, `refferer`, `date_add`, `flag_interview`, `flag_member`, `flag_aktif`) VALUES
+(1, 'K1', 'Bachrul Ilmi', 'Laki-laki', 'Single', 'Surabaya', '1990-02-15', '', '', '', 'Katolik', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', 'iOPAsBW2AdTulips.jpg', 'Cleaning Service', NULL, NULL, 'Y', 'Y', 'Y'),
+(2, 'K2', 'Anton Timur', 'Laki-laki', 'Menikah', 'Jakarta Selatan', '1978-03-12', 'Ciledug', '', '', 'Katolik', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', 'mPqipBi75wLighthouse.jpg', 'Cleaning Service', NULL, NULL, 'Y', 'Y', 'Y'),
+(3, 'K3', 'Joko Anwar', 'Laki-laki', 'Menikah', 'Merauke', '1960-05-30', 'Jakarta', '', '081232123', 'Budha', 'Universitas Indonesia', 'Sastra Indonesia', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', 'wyTKoXfAcXHydrangeas.jpg', 'Cleaning Service', NULL, NULL, 'Y', 'N', 'Y'),
+(4, 'K4', 'Pakde', 'Perempuan', 'Pelajar', '', NULL, '', '', '', 'Katolik', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', '1V50uXivdGKoala.jpg', 'Cleaning Service', NULL, NULL, 'Y', 'N', 'Y'),
+(5, 'K5', 'Susilo', 'Laki-laki', 'Pelajar', '', NULL, '', '', '', 'Islam', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', 'ycAGjN_DLAChrysanthemum.jpg', 'Cleaning Service,Operator', NULL, NULL, 'Y', 'Y', 'Y'),
+(6, 'K6', 'Joko Bektio', 'Laki-laki', 'Single', 'Medan', '1990-02-17', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', '', 'eNsojtKTWUPenguins.jpg', 'Security', NULL, NULL, 'Y', 'N', 'Y'),
+(7, 'K7', 'Jengki Joko', 'Perempuan', 'Pelajar', '', NULL, '', '', '', 'Katolik', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Silo', '123983812', '', '', '', '', '', '', '', 'fIHIsPFTUfLighthouse.jpg', 'Cleaning Service,Operator', NULL, NULL, 'Y', 'N', 'Y'),
+(8, 'K8', 'sddfdsf', '', '', '', NULL, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ss', 'Internet', '0000-00-00', 'N', 'N', 'Y'),
+(9, 'K9', 'asdasdasd', '', '', '', NULL, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ss', 'Browser', '2017-02-02', 'N', 'N', 'Y');
 
 -- --------------------------------------------------------
 
@@ -122,6 +125,13 @@ CREATE TABLE `kontrak` (
   `status` varchar(20) DEFAULT NULL,
   `periode` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kontrak`
+--
+
+INSERT INTO `kontrak` (`id`, `mitraid`, `lampiran`, `penjelasan`, `tahun`, `status`, `periode`) VALUES
+(1, 1, 'YFnplCOwJ0Chrysanthemum.jpg', 'codot', '20123', 'Aktif', '2323');
 
 -- --------------------------------------------------------
 
@@ -229,6 +239,32 @@ INSERT INTO `pembayaran` (`id`, `kandidatid`, `tglbayar`, `nominal`, `picbayar`,
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `report_test`
+--
+
+DROP TABLE IF EXISTS `report_test`;
+CREATE TABLE `report_test` (
+  `id` int(20) NOT NULL,
+  `kandidatid` int(20) NOT NULL,
+  `name_test` varchar(50) DEFAULT NULL,
+  `result_test` varchar(20) DEFAULT NULL,
+  `keterangan` varchar(100) DEFAULT NULL,
+  `flag_aktif` varchar(20) NOT NULL DEFAULT 'Y'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `report_test`
+--
+
+INSERT INTO `report_test` (`id`, `kandidatid`, `name_test`, `result_test`, `keterangan`, `flag_aktif`) VALUES
+(1, 9, 'ujian matematika', '900', 'lulus', 'Y'),
+(2, 9, 'asdsad', '232', 'sdasd', 'N'),
+(3, 9, 'saasd', 'asda', 'asdas', 'N'),
+(4, 3, 'psikotes', '70', 'ga lulus', 'Y');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tran_jabatan`
 --
 
@@ -307,6 +343,12 @@ ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `report_test`
+--
+ALTER TABLE `report_test`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -320,7 +362,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `kandidat`
 --
 ALTER TABLE `kandidat`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `konfigurasi`
 --
@@ -330,7 +372,7 @@ ALTER TABLE `konfigurasi`
 -- AUTO_INCREMENT for table `kontrak`
 --
 ALTER TABLE `kontrak`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `mitra`
 --
@@ -351,6 +393,11 @@ ALTER TABLE `mst_jabatan`
 --
 ALTER TABLE `pembayaran`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `report_test`
+--
+ALTER TABLE `report_test`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --

@@ -78,6 +78,7 @@ $c = "kandidat";
 
 									<a href="index.php?r=kandidat/cetak-form-interview&id=<?= $kan->id ?>" title="Print Form Interview" class="icon-cetak-cv info-tooltip"></a>
 									<a href="index.php?r=kandidat/interview&id=<?= $kan->id ?>" title="Lakukan Interview" class="icon-view-edit info-tooltip"></a>
+									<a href="index.php?r=kandidat/list-test&id=<?= $kan->id ?>" title="Input Nilai Test" class="icon-test info-tooltip"></a>
 								</td>
 							</tr>
 						<?php endforeach; ?>
