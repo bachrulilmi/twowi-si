@@ -16,6 +16,8 @@ use Yii;
  * @property string $telppic
  * @property string $emailpic
  * @property string $deskripsi
+ * @property string $namapictwi
+ * @property string $emailpictwi
  * @property string $status
  * @property string $lampiran
  * @property string $lampiran2
@@ -41,7 +43,7 @@ class Mitra extends \yii\db\ActiveRecord
         return [
             //[['mitraid', 'jabatanpic'], 'required'],
             [['mitraid', 'status'], 'string', 'max' => 10],
-            [['namamitra', 'emailpic'], 'string', 'max' => 50],
+            [['namamitra', 'emailpic', 'namapictwi', 'emailpictwi'], 'string', 'max' => 50],
             [['alamatmitra', 'deskripsi', 'lampiran', 'lampiran2', 'lampiran3', 'lampiran4', 'lampiran5'], 'string', 'max' => 255],
             [['namapic'], 'string', 'max' => 100],
             [['jabatanpic'], 'string', 'max' => 20],
@@ -64,6 +66,8 @@ class Mitra extends \yii\db\ActiveRecord
             'telppic' => 'Telppic',
             'emailpic' => 'Emailpic',
             'deskripsi' => 'Deskripsi',
+            'namapictwi' => 'Namapictwi',
+            'emailpictwi' => 'Emailpictwi',
             'status' => 'Status',
             'lampiran' => 'Lampiran',
             'lampiran2' => 'Lampiran2',
