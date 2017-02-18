@@ -76,4 +76,9 @@ class Mitra extends \yii\db\ActiveRecord
             'lampiran5' => 'Lampiran5',
         ];
     }
+
+    public function getOrder()
+    {
+        return $this->hasMany(Order::className(), ['mitraid' => 'id']);
+    }
 }

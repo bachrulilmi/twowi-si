@@ -104,6 +104,11 @@ AppAsset::register($this);
 				$mit_a ='';
 				$mit_b='';
 
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
+
 			}elseif ($this->title == 'List Interview Kandidat Baru'  || $this->title == 'Interview Kandidat') {
 
 
@@ -119,6 +124,11 @@ AppAsset::register($this);
 				$mit_a ='';
 				$mit_b='';
 
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
+
 
 			}elseif ($this->title == 'Pembayaran Kandidat Baru' || $this->title == 'Pembayaran Kandidat') {
 				$kandidat = 'class="current"';
@@ -132,6 +142,11 @@ AppAsset::register($this);
 				$mit_sub = '';
 				$mit_a ='';
 				$mit_b='';
+
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
 			}elseif ($this->title == 'Database Kandidat') {
 				$kandidat = 'class="current"';
 				$kan_sub = 'show';
@@ -144,6 +159,11 @@ AppAsset::register($this);
 				$mit_sub = '';
 				$mit_a ='';
 				$mit_b='';
+
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
 			}elseif ($this->title == 'List Mitra' || $this->title =='Kontrak Baru' || $this->title =='Ubah Kontrak' || $this->title =='List Kontrak' || $this->title =='Edit Mitra') {
 	
 				$kandidat = 'class="select"';
@@ -157,6 +177,11 @@ AppAsset::register($this);
 				$mit_sub = 'show';
 				$mit_a ='class="sub_show"';
 				$mit_b='';
+
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
 
 			}elseif ($this->title == 'Tambah Mitra Baru') {
 	
@@ -172,7 +197,13 @@ AppAsset::register($this);
 				$mit_a ='';
 				$mit_b='class="sub_show"';
 
-			}else{
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
+
+			}elseif ($this->title == 'List Order') {
+	
 				$kandidat = 'class="select"';
 				$kan_sub = '';
 				$kan_a = '';
@@ -184,6 +215,49 @@ AppAsset::register($this);
 				$mit_sub = '';
 				$mit_a ='';
 				$mit_b='';
+
+				$order = 'class="current"';
+				$ord_sub = 'show';
+				$ord_a ='class="sub_show"';
+				$ord_b='';
+
+			}elseif ($this->title == 'Order Baru') {
+	
+				$kandidat = 'class="select"';
+				$kan_sub = '';
+				$kan_a = '';
+				$kan_b = '';
+				$kan_c = '';
+				$kan_d = '';
+
+				$mitra = 'class="select"';
+				$mit_sub = '';
+				$mit_a ='';
+				$mit_b='';
+
+				$order = 'class="current"';
+				$ord_sub = 'show';
+				$ord_a ='';
+				$ord_b='class="sub_show"';
+
+			}
+			else{
+				$kandidat = 'class="select"';
+				$kan_sub = '';
+				$kan_a = '';
+				$kan_b = '';
+				$kan_c = '';
+				$kan_d = '';
+
+				$mitra = 'class="select"';
+				$mit_sub = '';
+				$mit_a ='';
+				$mit_b='';
+
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
 			}
 			?>
 
@@ -212,7 +286,7 @@ AppAsset::register($this);
 					<div class="select_sub <?=$mit_sub ?>">
 						<ul class="sub">
 							<li <?= $mit_a ?>><a href="<?= Url::to(['mitra/list']); ?>">Database Mitra</a></li>
-							<li ><a href="<?= Url::to(['mitra/index']); ?>">Tambah Mitra</a></li>
+							<li <?= $mit_b ?>><a href="<?= Url::to(['mitra/index']); ?>">Tambah Mitra</a></li>
 						</ul>
 					</div>
 					<!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -221,12 +295,12 @@ AppAsset::register($this);
 
 			<div class="nav-divider">&nbsp;</div>
 
-			<ul class="select"><li><a href="#nogo"><b>Order</b><!--[if IE 7]><!--></a><!--<![endif]-->
+			<ul <?= $order ?>><li><a href="#nogo"><b>Order</b><!--[if IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table><tr><td><![endif]-->
-				<div class="select_sub">
+				<div class="select_sub <?=$ord_sub ?>">
 					<ul class="sub">
-						<li><a href="list_order.html">Daftar Order</a></li>
-						<li><a href="tambah_order.html">Tambah Order</a></li>
+						<li <?= $ord_a ?>><a href="<?= Url::to(['order/list-order']); ?>">Daftar Order</a></li>
+						<li <?= $ord_b ?>><a href="<?= Url::to(['order/index']); ?>">Tambah Order</a></li>
 
 					</ul>
 				</div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 04 Feb 2017 pada 00.50
+-- Generation Time: 18 Feb 2017 pada 19.02
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -74,6 +74,14 @@ CREATE TABLE `kandidat` (
   `flag_aktif` varchar(20) DEFAULT 'Y'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `kandidat`
+--
+
+INSERT INTO `kandidat` (`id`, `kandidatid`, `namalengkap`, `jenkel`, `status`, `tempatlahir`, `tanggallahir`, `alamat`, `kodepos`, `notelp`, `agama`, `namasekolah`, `jurusan`, `namacomp1`, `jabatan1`, `lamabkrj1`, `namacomp2`, `jabatan2`, `lamabkrj2`, `namacomp3`, `jabatan3`, `lamabkrj3`, `nmbpk`, `nmibu`, `pkrjortu`, `nama_kerabat`, `telp_kerabat`, `msoffice`, `photosh`, `autoca`, `others`, `inggris`, `mengemudi`, `sim`, `fotokandidat`, `jabatan`, `refferer`, `date_add`, `flag_interview`, `flag_member`, `flag_aktif`) VALUES
+(1, 'K1', 'sadad', 'Laki-laki', 'Pelajar', 'asdad', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'cOjf5dKHCNSmartSelectImage_2017-01-26-00-42-07.jpg', 'Cleaning Service', 'Browser', '2017-02-11', 'Y', 'N', 'Y'),
+(2, 'K2', 'sdfsadfsd', 'Laki-laki', '', '', NULL, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ss', 'Koran', '2017-02-16', 'N', 'N', 'Y');
+
 -- --------------------------------------------------------
 
 --
@@ -140,6 +148,14 @@ CREATE TABLE `mitra` (
   `lampiran5` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `mitra`
+--
+
+INSERT INTO `mitra` (`id`, `mitraid`, `namamitra`, `alamatmitra`, `namapic`, `jabatanpic`, `telppic`, `emailpic`, `deskripsi`, `namapictwi`, `emailpictwi`, `status`, `lampiran`, `lampiran2`, `lampiran3`, `lampiran4`, `lampiran5`) VALUES
+(1, '', 'nama mitra', 'sfds', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
+(2, '', 'perusahaan codo', '', '', '', '', '', '', '', '', 'Aktif', NULL, NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -185,6 +201,41 @@ INSERT INTO `mst_jabatan` (`id`, `nmjabatan`, `keterangan`) VALUES
 (1, 'Cleaning Service', NULL),
 (2, 'Operator', NULL),
 (3, 'Security', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order` (
+  `id` int(20) NOT NULL,
+  `mitraid` int(20) NOT NULL,
+  `namapictwo` varchar(50) DEFAULT NULL,
+  `kategori` varchar(20) DEFAULT NULL,
+  `posisi` varchar(20) DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `spesifikasi` varchar(100) DEFAULT NULL,
+  `periode` varchar(20) DEFAULT NULL,
+  `sat_periode` varchar(20) DEFAULT NULL,
+  `tgl_mulai` date DEFAULT NULL,
+  `tgl_selesai` date DEFAULT NULL,
+  `nilai_kontrak` varchar(20) DEFAULT NULL,
+  `bpjs` varchar(100) DEFAULT NULL,
+  `gaji` varchar(20) DEFAULT NULL,
+  `thr` varchar(20) DEFAULT NULL,
+  `lampiran` varchar(100) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `order`
+--
+
+INSERT INTO `order` (`id`, `mitraid`, `namapictwo`, `kategori`, `posisi`, `qty`, `spesifikasi`, `periode`, `sat_periode`, `tgl_mulai`, `tgl_selesai`, `nilai_kontrak`, `bpjs`, `gaji`, `thr`, `lampiran`, `status`) VALUES
+(1, 1, 'jono', 'Outsourcing', 'Operator', 200, 'bisa baca', '2 tahun', 'Bulan', '2017-02-01', '2017-03-01', '2000000', 'Tenaga Kerja,Hari Tua', 'UMP', 'Exclude', 'atAFO8yoonSmartSelectImage_2017-01-26-00-42-07.jpg', 'DISABLE'),
+(2, 2, 'komar', 'Outsourcing', 'Security', 100, 'bisa nulis', '10', 'Bulan', '2017-01-01', '2017-01-04', '34000000', 'Tenaga Kerja,Kematian,Hari Tua', 'UMP', 'Exclude', '', 'OPEN');
 
 -- --------------------------------------------------------
 
@@ -294,6 +345,12 @@ ALTER TABLE `mst_jabatan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
@@ -319,7 +376,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `kandidat`
 --
 ALTER TABLE `kandidat`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `konfigurasi`
 --
@@ -334,7 +391,7 @@ ALTER TABLE `kontrak`
 -- AUTO_INCREMENT for table `mitra`
 --
 ALTER TABLE `mitra`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `mst_biaya`
 --
@@ -345,6 +402,11 @@ ALTER TABLE `mst_biaya`
 --
 ALTER TABLE `mst_jabatan`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `order`
+--
+ALTER TABLE `order`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
