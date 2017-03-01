@@ -41,20 +41,18 @@ $this->title = 'Form Checklist';
         'id' => 'login-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-2 control-label'],
         ],
     ]); ?>
 
-        <?= $form->field($model, 'kandidatid')->textInput(['autofocus' => true])->label('Nama Lengkap') ?>
-        <?= $form->field($model, 'namalengkap')->textInput(['autofocus' => true])->label('Nama Lengkap') ?>
+        <?= $form->field($model, 'kandidatid')->textInput(['autofocus' => true])->label('No Kandidat') ?>
+        <div class="form-group field-delivery-namalengkap">
+		<label class="col-lg-2 control-label" for="delivery-namalengkap">Nama Lengkap</label>
+		<div class="col-lg-3"><input type="text" id="delivery-kandidatid" class="form-control" name="" value="<?=$model->kandidat->namalengkap ?>"></div>
+		<div class="col-lg-7"><div class="help-block help-block-error "></div></div>
+		</div>
 
-		<?= $form->field($model, 'mengemudi')->dropdownList([
-			'Ya' => 'Ya', 
-			'Tidak' => 'Tidak',
-			],
-			['prompt'=>'Pilih']
-		)->label('Mengemudi');?>
 		
 		<?= $form->field($model, 'ktp')->fileInput()->label('FC KTP') ?>
 		<?= $form->field($model, 'lamaran')->fileInput()->label('Surat Lamaran') ?>
@@ -66,11 +64,10 @@ $this->title = 'Form Checklist';
 		<?= $form->field($model, 'flag_checklist')->dropdownList([
 			'In Progress' => 'In Progress', 
 			'Complete' => 'Complete',
-			],
-			['prompt'=>'Pilih']
+			]
 		)->label('Status Dokumen');?>
         <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
+            <div class="col-lg-offset-2 col-lg-11">
                 <?= Html::submitButton('Simpan', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 <button type="button" class="btn btn-danger" onclick="location.href='<?= Url::to(['deliver/index' ]) ?>'">Batal</button>
             </div>

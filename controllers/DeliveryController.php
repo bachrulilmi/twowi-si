@@ -169,12 +169,57 @@ class DeliveryController extends \yii\web\Controller
 			]);
 	}
 
-	public function actionDoChecklist($id) #sampai sini
+	public function actionDoChecklist($id) 
 	{
-		$order = Delivery::findOne($id);
-		$order->bpjs = explode(',',$order->bpjs);
-		$mitra = ArrayHelper::map(Mitra::find()->all(), 'id', 'namamitra');
-		return $this->render('orderedit', ['model' => $order,'mitra'=>$mitra]);
+		$delivery = Delivery::find()->With('kandidat')->where(['id' => $id])->one();
+		
+		return $this->render('formchecklist', ['model' => $delivery]);
+	}
+
+	public function actionSimpanChecklist($id)
+	{
+
+		$model = Delivery::findOne($id);
+
+		$data = Yii::$app->request->post();
+
+		if ($model->load($data) ) {
+
+			
+			$filektp = UploadedFile::getInstance($model, 'ktp');
+			$filelamaran = UploadedFile::getInstance($model, 'lamaran');
+			$fileijazah = UploadedFile::getInstance($model, 'ijazah');
+			$filetranskrip = UploadedFile::getInstance($model, 'transkrip');
+			$filekartukel = UploadedFile::getInstance($model, 'kartukel');
+			$filesuratkuning = UploadedFile::getInstance($model, 'suratkuning');
+			$filepengalamankerja = UploadedFile::getInstance($model, 'pengalamankerja'); #sampai sini
+			if(!empty($file)){
+				
+				$newname = Yii::$app->getSecurity()->generateRandomString(10).$file->baseName.'.'.$file->extension;
+				$model->lampiran = $newname;	
+				if($model->save() ){
+					$file->saveAs('orders/' . $newname);
+					return $this->redirect(['order/list-order']);
+				}else{
+					return ;
+				}
+			}else{
+				if($model->save() ){
+					
+					return $this->redirect(['order/list-order']);
+				}else{
+					return ;
+				}
+			}
+
+			
+
+		} else {
+			return $this->render('interviewkandidat', [
+				'model' => $model
+				]);
+		}
+		//return $this->render('error', ['model' => $data['Kandidat']['jabatan']]);		
 	}
 
 }
