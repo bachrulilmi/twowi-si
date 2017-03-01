@@ -113,7 +113,7 @@ public function actionUpdate($id)
 
 	if ($model->load($data) ) {
 
-			$model->bpjs=$bpjs; ////baru sampai sini
+			$model->bpjs=$bpjs; 
 
 			$file = UploadedFile::getInstance($model, 'lampiran');
 			if(!empty($file)){

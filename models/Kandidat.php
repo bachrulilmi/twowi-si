@@ -124,4 +124,9 @@ class Kandidat extends \yii\db\ActiveRecord
             'flag_aktif' => 'Flag Aktif',
         ];
     }
+
+    public function getDelivery()
+    {
+        return $this->hasMany(Delivery::className(), ['kandidatid' => 'kandidatid']);
+    }
 }

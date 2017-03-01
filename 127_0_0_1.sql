@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 Feb 2017 pada 19.02
+-- Generation Time: 01 Mar 2017 pada 15.07
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -22,6 +22,38 @@ SET time_zone = "+00:00";
 DROP DATABASE `twowinsistem`;
 CREATE DATABASE IF NOT EXISTS `twowinsistem` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `twowinsistem`;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `delivery`
+--
+
+DROP TABLE IF EXISTS `delivery`;
+CREATE TABLE `delivery` (
+  `id` int(20) NOT NULL,
+  `orderid` varchar(20) DEFAULT NULL,
+  `kandidatid` varchar(20) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `flag_checklist` varchar(20) DEFAULT NULL,
+  `ktp` varchar(100) DEFAULT NULL,
+  `lamaran` varchar(100) DEFAULT NULL,
+  `ijazah` varchar(100) DEFAULT NULL,
+  `transkrip` varchar(100) DEFAULT NULL,
+  `kartukel` varchar(100) DEFAULT NULL,
+  `suratkuning` varchar(100) DEFAULT NULL,
+  `pengalamankerja` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `delivery`
+--
+
+INSERT INTO `delivery` (`id`, `orderid`, `kandidatid`, `status`, `flag_checklist`, `ktp`, `lamaran`, `ijazah`, `transkrip`, `kartukel`, `suratkuning`, `pengalamankerja`) VALUES
+(1, 'sadad', 'asd', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '2', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -309,6 +341,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `auth_key`, `password_reset_t
 --
 
 --
+-- Indexes for table `delivery`
+--
+ALTER TABLE `delivery`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kandidat`
 --
 ALTER TABLE `kandidat`
@@ -372,6 +410,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `delivery`
+--
+ALTER TABLE `delivery`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `kandidat`
 --

@@ -314,7 +314,10 @@ AppAsset::register($this);
 			<!--[if lte IE 6]><table><tr><td><![endif]-->
 			<div class="select_sub">
 				<ul class="sub">
-					<li><a href="list_delivery.html">Daftar Delivery</a></li>
+					<li><a href="<?= Url::to(['delivery/list-deliv']); ?>">Preparing</a></li>
+					<li><a href="<?= Url::to(['delivery/list-checklist']); ?>">Checklist</a></li>
+					<li><a href="">Pembekalan</a></li>
+					<li><a href="">Testing</a></li>
 
 				</ul>
 			</div>
