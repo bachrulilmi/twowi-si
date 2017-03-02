@@ -316,8 +316,8 @@ AppAsset::register($this);
 				<ul class="sub">
 					<li><a href="<?= Url::to(['delivery/list-deliv']); ?>">Preparing</a></li>
 					<li><a href="<?= Url::to(['delivery/list-checklist']); ?>">Checklist</a></li>
-					<li><a href="">Pembekalan</a></li>
-					<li><a href="">Testing</a></li>
+					<li><a href="<?= Url::to(['delivery/list-pembekalan']); ?>">Pembekalan</a></li>
+					<li><a href="<?= Url::to(['delivery/list-testing']); ?>">Testing</a></li>
 
 				</ul>
 			</div>

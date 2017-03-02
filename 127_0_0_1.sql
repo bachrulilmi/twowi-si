@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 01 Mar 2017 pada 15.07
+-- Generation Time: 02 Mar 2017 pada 15.10
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -42,18 +42,29 @@ CREATE TABLE `delivery` (
   `transkrip` varchar(100) DEFAULT NULL,
   `kartukel` varchar(100) DEFAULT NULL,
   `suratkuning` varchar(100) DEFAULT NULL,
-  `pengalamankerja` varchar(100) DEFAULT NULL
+  `pengalamankerja` varchar(100) DEFAULT NULL,
+  `flag_pembekalan` varchar(20) DEFAULT NULL,
+  `date_bekal` date DEFAULT NULL,
+  `time_bekal` time DEFAULT NULL,
+  `nama_bekal` varchar(100) DEFAULT NULL,
+  `trainer_bekal` varchar(100) DEFAULT NULL,
+  `keterangan` varchar(200) DEFAULT NULL,
+  `flag_test` varchar(20) DEFAULT NULL,
+  `nilai_test` int(11) DEFAULT NULL,
+  `tgl_test` date DEFAULT NULL,
+  `hasil_test` varchar(20) DEFAULT NULL,
+  `periode_kontrak` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `delivery`
 --
 
-INSERT INTO `delivery` (`id`, `orderid`, `kandidatid`, `status`, `flag_checklist`, `ktp`, `lamaran`, `ijazah`, `transkrip`, `kartukel`, `suratkuning`, `pengalamankerja`) VALUES
-(1, 'sadad', 'asd', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, '2', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `delivery` (`id`, `orderid`, `kandidatid`, `status`, `flag_checklist`, `ktp`, `lamaran`, `ijazah`, `transkrip`, `kartukel`, `suratkuning`, `pengalamankerja`, `flag_pembekalan`, `date_bekal`, `time_bekal`, `nama_bekal`, `trainer_bekal`, `keterangan`, `flag_test`, `nilai_test`, `tgl_test`, `hasil_test`, `periode_kontrak`) VALUES
+(1, 'sadad', 'asd', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '2', 'K1', 'AKTIF', 'In Progress', '', 'v-g0nrFKaUDesert.jpg', 'xwktBraVlnHydrangeas.jpg', '', 'fBDxRghFsqTulips.jpg', '', 'IpmSPU8FDMPenguins.jpg', 'Y', '2017-03-01', '23:56:00', 'asd', 'asda', 'asdad', 'Y', 85, '2017-02-19', 'Lulus', '2017-2019');
 
 -- --------------------------------------------------------
 
@@ -152,6 +163,13 @@ CREATE TABLE `kontrak` (
   `nokontrak` varchar(50) DEFAULT NULL,
   `ttd` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kontrak`
+--
+
+INSERT INTO `kontrak` (`id`, `mitraid`, `lampiran`, `penjelasan`, `tahun`, `status`, `periode`, `nokontrak`, `ttd`) VALUES
+(1, 2, 'o1RWTkv18-Lighthouse.jpg', '', '', 'Aktif', '', '8908908', '');
 
 -- --------------------------------------------------------
 
@@ -429,7 +447,7 @@ ALTER TABLE `konfigurasi`
 -- AUTO_INCREMENT for table `kontrak`
 --
 ALTER TABLE `kontrak`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `mitra`
 --

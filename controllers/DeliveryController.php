@@ -192,27 +192,204 @@ class DeliveryController extends \yii\web\Controller
 			$filetranskrip = UploadedFile::getInstance($model, 'transkrip');
 			$filekartukel = UploadedFile::getInstance($model, 'kartukel');
 			$filesuratkuning = UploadedFile::getInstance($model, 'suratkuning');
-			$filepengalamankerja = UploadedFile::getInstance($model, 'pengalamankerja'); #sampai sini
-			if(!empty($file)){
-				
-				$newname = Yii::$app->getSecurity()->generateRandomString(10).$file->baseName.'.'.$file->extension;
-				$model->lampiran = $newname;	
-				if($model->save() ){
-					$file->saveAs('orders/' . $newname);
-					return $this->redirect(['order/list-order']);
-				}else{
-					return ;
-				}
-			}else{
-				if($model->save() ){
-					
-					return $this->redirect(['order/list-order']);
-				}else{
-					return ;
-				}
+			$filepengalamankerja = UploadedFile::getInstance($model, 'pengalamankerja'); 
+
+			if(!empty($filektp)){
+				$newname = Yii::$app->getSecurity()->generateRandomString(10).$filektp->baseName.'.'.$filektp->extension;
+				$model->ktp = $newname;
+				$filektp->saveAs('checklist/' . $newname);
+			}if (!empty($filelamaran)) {
+				$newname = Yii::$app->getSecurity()->generateRandomString(10).$filelamaran->baseName.'.'.$filelamaran->extension;
+				$model->lamaran = $newname;
+				$filelamaran->saveAs('checklist/' . $newname);
+			}if (!empty($fileijazah)) {
+				$newname = Yii::$app->getSecurity()->generateRandomString(10).$fileijazah->baseName.'.'.$fileijazah->extension;
+				$model->ijazah = $newname;
+				$fileijazah->saveAs('checklist/' . $newname);
+			}if (!empty($filetranskrip)) {
+				$newname = Yii::$app->getSecurity()->generateRandomString(10).$filetranskrip->baseName.'.'.$filetranskrip->extension;
+				$model->transkrip = $newname;
+				$filetranskrip->saveAs('checklist/' . $newname);
+			}if (!empty($filekartukel)) {
+				$newname = Yii::$app->getSecurity()->generateRandomString(10).$filekartukel->baseName.'.'.$filekartukel->extension;
+				$model->kartukel = $newname;
+				$filekartukel->saveAs('checklist/' . $newname);
+			}if (!empty($filesuratkuning)) {
+				$newname = Yii::$app->getSecurity()->generateRandomString(10).$filesuratkuning->baseName.'.'.$filesuratkuning->extension;
+				$model->suratkuning = $newname;
+				$filesuratkuning->saveAs('checklist/' . $newname);
+			}if (!empty($filepengalamankerja)) {
+				$newname = Yii::$app->getSecurity()->generateRandomString(10).$filepengalamankerja->baseName.'.'.$filepengalamankerja->extension;
+				$model->pengalamankerja = $newname;
+				$filepengalamankerja->saveAs('checklist/' . $newname);
 			}
 
-			
+			if($model->save() ){
+
+				return $this->redirect(['delivery/list-check-kandidat','id' => $model->orderid]);
+			}else{
+				return ;
+			}			
+
+		} else {
+			return $this->render('interviewkandidat', [
+				'model' => $model
+				]);
+		}
+		//return $this->render('error', ['model' => $data['Kandidat']['jabatan']]);		
+	}
+
+	public function actionListPembekalan(){
+		$request = Yii::$app->request;
+		$query = Order::find()
+		->With('mitra')
+		->where(['status' => ['OPEN','IN PROGRESS']])
+		->andWhere(['like', $request->post('kolom', 'status'), $request->post('nilai', '')]);		
+
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count(),
+			]);
+
+		$order = $query->orderBy('id')
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+
+
+		return $this->render('listpembekalan', [
+			'order' => $order,
+			'pagination' => $pagination,
+			]);
+	}
+
+	public function actionListBekalKandidat($id)
+	{
+		$order = Order::find()->With('mitra')->where(['id' => $id])->one();
+		$query = Delivery::find()
+		->With('kandidat')
+		->where(['orderid' => $id]);
+		
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count(),
+			]);
+
+		$delivery = $query->orderBy('id')
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+
+
+		return $this->render('listkanbekal', [
+			'order' => $order,
+			'delivery' => $delivery,
+			'pagination' => $pagination,
+			]);
+	}
+
+	public function actionDoBekal($id) 
+	{
+		$delivery = Delivery::find()->With('kandidat')->where(['id' => $id])->one();
+		
+		return $this->render('formpembekalan', ['model' => $delivery]);
+	}
+
+	public function actionSimpanPembekalan($id)
+	{
+
+		$model = Delivery::findOne($id);
+
+		$data = Yii::$app->request->post();
+
+		if ($model->load($data) ) {
+			$model->flag_pembekalan = "Y";
+			if($model->save() ){
+
+				return $this->redirect(['delivery/list-bekal-kandidat','id' => $model->orderid]);
+			}else{
+				return ;
+			}			
+
+		} else {
+			return $this->render('interviewkandidat', [
+				'model' => $model
+				]);
+		}
+		//return $this->render('error', ['model' => $data['Kandidat']['jabatan']]);		
+	}
+
+	public function actionListTesting(){
+		$request = Yii::$app->request;
+		$query = Order::find()
+		->With('mitra')
+		->where(['status' => ['OPEN','IN PROGRESS']])
+		->andWhere(['like', $request->post('kolom', 'status'), $request->post('nilai', '')]);		
+
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count(),
+			]);
+
+		$order = $query->orderBy('id')
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+
+
+		return $this->render('listtesting', [
+			'order' => $order,
+			'pagination' => $pagination,
+			]);
+	}
+
+	public function actionListTestingKandidat($id)
+	{
+		$order = Order::find()->With('mitra')->where(['id' => $id])->one();
+		$query = Delivery::find()
+		->With('kandidat')
+		->where(['orderid' => $id]);
+		
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count(),
+			]);
+
+		$delivery = $query->orderBy('id')
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+
+
+		return $this->render('listkantest', [
+			'order' => $order,
+			'delivery' => $delivery,
+			'pagination' => $pagination,
+			]);
+	}
+
+	public function actionInputNilai($id) 
+	{
+		$delivery = Delivery::find()->With('kandidat')->where(['id' => $id])->one();
+		
+		return $this->render('forminputnilai', ['model' => $delivery]);
+	}
+
+	public function actionSimpanNilai($id)
+	{
+
+		$model = Delivery::findOne($id);
+
+		$data = Yii::$app->request->post();
+
+		if ($model->load($data) ) {
+			$model->flag_test = "Y";
+			if($model->save() ){
+
+				return $this->redirect(['delivery/list-testing-kandidat','id' => $model->orderid]);
+			}else{
+				return ;
+			}			
 
 		} else {
 			return $this->render('interviewkandidat', [
