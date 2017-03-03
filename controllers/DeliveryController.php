@@ -77,6 +77,7 @@ class DeliveryController extends \yii\web\Controller
 
 		return $this->render('listkandidat', [
 			'order' => $order,
+			'count' => $query->count(),
 			'delivery' => $delivery,
 			'pagination' => $pagination,
 			]);

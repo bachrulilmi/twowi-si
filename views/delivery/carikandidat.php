@@ -82,7 +82,7 @@ $this->title = 'Cari Kandidat';
 					
 					<td class="options-width">
 										
-					<a href="<?= Url::to(['delivery/choose', 'kanid' =>$kan->kandidatid,'orderid'=>$order ]) ?>" title="Pilih Kandidat" class="icon-test info-tooltip"></a>
+					<a href="<?= Url::to(['delivery/choose', 'kanid' =>$kan->kandidatid,'orderid'=>$order ]) ?>" title="Pilih Kandidat" class="icon-pilih info-tooltip"></a>
 					</td>
 				</tr>
 				<?php endforeach; ?>

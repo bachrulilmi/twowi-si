@@ -49,6 +49,11 @@ $this->title = 'List Kandidat Order';
 							<th>:</th> 
 							<th><?= Html::encode($order->qty." ".$order->posisi) ?></th>
 						</tr>
+						<tr>
+							<th>Jumlah Yang Sudah Dipilih :</th>
+							<th>:</th> 
+							<th><?= Html::encode($count) ?> Kandidat</th>
+						</tr>
 
 					</table>
 					<!--  start top-search -->
