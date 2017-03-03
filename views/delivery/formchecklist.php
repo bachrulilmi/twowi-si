@@ -145,8 +145,8 @@ $this->title = 'Form Checklist';
 					</div>
 					
 					<?= $form->field($model, 'flag_checklist')->dropdownList([
-						'In Progress' => 'In Progress', 
-						'Complete' => 'Complete',
+						'IN PROGRESS' => 'IN PROGRESS', 
+						'COMPLETE' => 'COMPLETE',
 						]
 						)->label('Status Dokumen');?>
 						<div class="form-group">

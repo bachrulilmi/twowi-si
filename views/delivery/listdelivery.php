@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\helpers\Url;
-
+use app\models\Delivery;
 $this->title = 'Preparing Delivery';
 
 ?>
@@ -58,7 +58,7 @@ $this->title = 'Preparing Delivery';
 
 								<th class="table-header-repeat line-left "><p>No Order</p>	</th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Nama Mitra</p></th>
-								<th class="table-header-repeat line-left"><p>QTY</p></th>
+								<th class="table-header-repeat line-left"><p>QTY/Kandidat</p></th>
 								<th class="table-header-repeat line-left"><p>Posisi</p></th>
 								<th class="table-header-repeat line-left"><p>Status</p></th>
 								<th class="table-header-options line-left"><p>Actions</p></th>
@@ -66,10 +66,13 @@ $this->title = 'Preparing Delivery';
 
 							<?php $count=1;foreach ($order as $or): ?>
 							<tr>
-
+								<?php
+								$count = Delivery::find()
+								->where(['orderid' => $or->id])->count();
+								 ?>
 								<td><?= $or->id ?></td>
 								<td><?= $or->mitra->namamitra ?></td>
-								<td><?= $or->qty ?></td>
+								<td><?= $or->qty ?>/<?=$count?></td>
 								<td><?= $or->posisi ?></td>
 								<td><?= $or->status ?></td>
 								<td class="options-width">

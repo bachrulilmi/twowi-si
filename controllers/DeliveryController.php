@@ -62,7 +62,8 @@ class DeliveryController extends \yii\web\Controller
 		$order = Order::find()->With('mitra')->where(['id' => $id])->one();
 		$query = Delivery::find()
 		->With('kandidat')
-		->where(['orderid' => $id]);
+		->where(['orderid' => $id])
+		->andWhere(['status' => 'AKTIF']);
 		
 		$pagination = new Pagination([
 			'defaultPageSize' => 5,
@@ -109,6 +110,16 @@ class DeliveryController extends \yii\web\Controller
 			]);
 	}
 
+	public function actionDisableKandidat($id){
+		$model = Delivery::findOne($id);
+		$model->status = 'NON AKTIF';
+		if($model->save(false)){
+			return $this->redirect(Yii::$app->request->referrer);
+		}else{
+			return $this->render('error', ['model' => $model->errors]);
+		}
+	}
+
 	public function actionChoose($kanid, $orderid)
 	{
 		$del = new Delivery();
@@ -150,8 +161,9 @@ class DeliveryController extends \yii\web\Controller
 		$order = Order::find()->With('mitra')->where(['id' => $id])->one();
 		$query = Delivery::find()
 		->With('kandidat')
-		->where(['orderid' => $id]);
-		
+		->where(['orderid' => $id])
+		->andWhere(['flag_checklist' => 'IN PROGRESS']);
+		$count = $query->count();
 		$pagination = new Pagination([
 			'defaultPageSize' => 5,
 			'totalCount' => $query->count(),
@@ -165,6 +177,7 @@ class DeliveryController extends \yii\web\Controller
 
 		return $this->render('listkancheck', [
 			'order' => $order,
+			'count' => $count,
 			'delivery' => $delivery,
 			'pagination' => $pagination,
 			]);

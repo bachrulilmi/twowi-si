@@ -33,7 +33,7 @@ $this->title = 'List Kandidat Checklist';
 
 
 
-					<table style="width:50%">
+					<table style="width:80%">
 						<tr>
 							<th width="30%">No Order</th>
 							<th width="5%">:</th> 
@@ -49,6 +49,11 @@ $this->title = 'List Kandidat Checklist';
 							<th>:</th> 
 							<th><?= Html::encode($order->qty." ".$order->posisi) ?></th>
 						</tr>
+						<tr>
+							<th>Jumlah Kandidat Belum Checklist</th>
+							<th>:</th> 
+							<th><?= Html::encode($count) ?> Kandidat</th>
+						</tr>
 
 					</table>
 					</br>
@@ -60,7 +65,7 @@ $this->title = 'List Kandidat Checklist';
 						<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 							<tr>
 
-								<th class="table-header-repeat line-left minwidth-1"><p>No Kandidat</p>	</th>
+								<th class="table-header-repeat line-left"><p>No Kandidat</p>	</th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Nama Kandidat</p></th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Posisi</p></th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Status Member</p></th>
@@ -73,10 +78,10 @@ $this->title = 'List Kandidat Checklist';
 								<td><?= $deliv->kandidatid ?></td>
 								<td><?= $deliv->kandidat->namalengkap ?></td>
 								<td><?= $deliv->kandidat->jabatan ?></td>
-								<td><?= $deliv->kandidat->flag_member ?></td>
+								<td><?= $deliv->kandidat->flag_checklist ?></td>
 								<td class="options-width">
 
-									<a href="<?= Url::to(['delivery/do-checklist', 'id' =>$deliv->id ]) ?>" title="Non Aktif" class="icon-disable info-tooltip"></a>
+									<a href="<?= Url::to(['delivery/do-checklist', 'id' =>$deliv->id ]) ?>" title="Checklist" class="icon-checklist info-tooltip"></a>
 									
 								</td>
 							</tr>

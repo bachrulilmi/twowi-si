@@ -57,11 +57,14 @@ $this->title = 'List Kandidat Order';
 
 					</table>
 					<!--  start top-search -->
+					<?php
+					if($order->qty > $count){
+					?>
 					<div id="top-search-left">
 						
 						<button type="button" class="btn btn-primary btn-sm" onclick="location.href='<?= Url::to(['delivery/new-kandidat', 'id' =>$order->id ]) ?>'">Kandidat Baru</button>
 					</div>
-
+					<?php } ?>
 					<!--  end top-search -->
 					<div class="clear"></div>
 

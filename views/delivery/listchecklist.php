@@ -56,7 +56,7 @@ $this->title = 'Checklist Delivery';
 						<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 							<tr>
 
-								<th class="table-header-repeat line-left minwidth-1"><p>No Order</p>	</th>
+								<th class="table-header-repeat line-left"><p>No Order</p>	</th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Nama Mitra</p></th>
 								<th class="table-header-repeat line-left"><p>QTY</p></th>
 								<th class="table-header-repeat line-left"><p>Posisi</p></th>
@@ -75,7 +75,7 @@ $this->title = 'Checklist Delivery';
 								<td class="options-width">
 
 									
-									<a href="index.php?r=delivery/list-check-kandidat&id=<?= $or->id ?>" title="Preparing" class="icon-view-edit info-tooltip"></a>
+									<a href="index.php?r=delivery/list-check-kandidat&id=<?= $or->id ?>" title="Isi Checklist" class="icon-edit-view info-tooltip"></a>
 								</td>
 							</tr>
 						<?php endforeach; ?>
