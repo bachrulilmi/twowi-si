@@ -78,7 +78,7 @@ $this->title = 'List Kandidat Checklist';
 								<td><?= $deliv->kandidatid ?></td>
 								<td><?= $deliv->kandidat->namalengkap ?></td>
 								<td><?= $deliv->kandidat->jabatan ?></td>
-								<td><?= $deliv->kandidat->flag_checklist ?></td>
+								<td><?= $deliv->flag_checklist ?></td>
 								<td class="options-width">
 
 									<a href="<?= Url::to(['delivery/do-checklist', 'id' =>$deliv->id ]) ?>" title="Checklist" class="icon-checklist info-tooltip"></a>

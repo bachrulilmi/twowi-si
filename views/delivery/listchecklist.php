@@ -72,10 +72,8 @@ $this->title = 'Checklist Delivery';
 								<td><?= $or->qty ?></td>
 								<td><?= $or->posisi ?></td>
 								<td><?= $or->status ?></td>
-								<td class="options-width">
-
-									
-									<a href="index.php?r=delivery/list-check-kandidat&id=<?= $or->id ?>" title="Isi Checklist" class="icon-edit-view info-tooltip"></a>
+								<td class="options-width">								
+									<a href="index.php?r=delivery/list-check-kandidat&id=<?= $or->id ?>" title="Isi Checklist" class="icon-view-edit info-tooltip"></a>
 								</td>
 							</tr>
 						<?php endforeach; ?>

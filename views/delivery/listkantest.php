@@ -64,6 +64,7 @@ $this->title = 'List Kandidat Testing';
 								<th class="table-header-repeat line-left minwidth-1"><p>Nama Kandidat</p></th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Posisi</p></th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Status Member</p></th>
+								<th class="table-header-repeat line-left minwidth-1"><p>Status Test</p></th>
 
 								<th class="table-header-options line-left"><p>Actions</p></th>
 							</tr>
@@ -73,12 +74,13 @@ $this->title = 'List Kandidat Testing';
 								<td><?= $deliv->kandidatid ?></td>
 								<td><?= $deliv->kandidat->namalengkap ?></td>
 								<td><?= $deliv->kandidat->jabatan ?></td>
-								<td><?= $deliv->kandidat->flag_member ?></td>
+								<td><?=( $deliv->kandidat->flag_member == 'Y') ? "Member" : "Non Member" ?></td>
+								<td><?= $deliv->hasil_test ?></td>
 								<td class="options-width">
 
-									<a href="<?= Url::to(['delivery/print-pengantar', 'id' =>$deliv->id ]) ?>" title="Print Surat Pengantar" class="icon-disable info-tooltip"></a>
+									<a href="<?= Url::to(['delivery/print-pengantar', 'id' =>$deliv->kandidatid ]) ?>" title="Print Surat Pengantar" class="icon-cetak-cv info-tooltip"></a>
 
-									<a href="<?= Url::to(['delivery/input-nilai', 'id' =>$deliv->id ]) ?>" title="Input Nilai Test" class="icon-disable info-tooltip"></a>
+									<a href="<?= Url::to(['delivery/input-nilai', 'id' =>$deliv->id ]) ?>" title="Input Nilai Test" class="icon-test info-tooltip"></a>
 									
 								</td>
 							</tr>

@@ -162,7 +162,8 @@ class DeliveryController extends \yii\web\Controller
 		$query = Delivery::find()
 		->With('kandidat')
 		->where(['orderid' => $id])
-		->andWhere(['flag_checklist' => 'IN PROGRESS']);
+		->andWhere(['flag_checklist' => 'IN PROGRESS'])
+		->andWhere(['status' => 'AKTIF']);
 		$count = $query->count();
 		$pagination = new Pagination([
 			'defaultPageSize' => 5,
@@ -282,7 +283,9 @@ class DeliveryController extends \yii\web\Controller
 		$order = Order::find()->With('mitra')->where(['id' => $id])->one();
 		$query = Delivery::find()
 		->With('kandidat')
-		->where(['orderid' => $id]);
+		->where(['orderid' => $id])
+		->andWhere(['flag_pembekalan' => 'N'])
+		->andWhere(['status' => 'AKTIF']);
 		
 		$pagination = new Pagination([
 			'defaultPageSize' => 5,
@@ -362,7 +365,8 @@ class DeliveryController extends \yii\web\Controller
 		$order = Order::find()->With('mitra')->where(['id' => $id])->one();
 		$query = Delivery::find()
 		->With('kandidat')
-		->where(['orderid' => $id]);
+		->where(['orderid' => $id])
+		->andWhere(['status' => 'Aktif']);
 		
 		$pagination = new Pagination([
 			'defaultPageSize' => 5,
@@ -411,6 +415,46 @@ class DeliveryController extends \yii\web\Controller
 				]);
 		}
 		//return $this->render('error', ['model' => $data['Kandidat']['jabatan']]);		
+	}
+
+	public function actionPrintPengantar($id){
+		$response = Yii::$app->response;
+		$response->format = \yii\web\Response::FORMAT_RAW;
+		$headers = Yii::$app->response->headers;
+		$headers->add('Content-Type', 'application/pdf');
+		// get your HTML raw content without any layouts or scripts
+		$kandidat = Kandidat::find()->where(['kandidatid' => $id])->one();
+		
+		$content = $this->renderPartial('suratpengantartest',['model' => $kandidat]);
+		
+    // setup kartik\mpdf\Pdf component
+		$pdf = new Pdf([
+        // set to use core fonts only
+			'mode' => Pdf::MODE_CORE, 
+        // A4 paper format
+			'format' => Pdf::FORMAT_A4, 
+        // portrait orientation
+			'orientation' => Pdf::ORIENT_PORTRAIT, 
+        // stream to browser inline
+			'destination' => Pdf::DEST_BROWSER, 
+        // your html content input
+			'content' => $content,  
+        // format content from your own css file if needed or use the
+        // enhanced bootstrap css built by Krajee for mPDF formatting 
+			'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+        // any css to be embedded if required
+			'cssInline' => '.kv-heading-1{font-size:18px}', 
+         // set mPDF properties on the fly
+			'options' => ['title' => 'Surat Pengantar'],
+         // call mPDF methods on the fly
+			'methods' => [ 
+			'SetHeader'=>['Surat Pengantar'], 
+			'SetFooter'=>['{PAGENO}'],
+			]
+			]);
+		
+    // return the pdf output as per the destination setting
+		return $pdf->render(); 
 	}
 
 }

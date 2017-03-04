@@ -75,7 +75,7 @@ $this->title = 'Testing Delivery';
 								<td class="options-width">
 
 									
-									<a href="index.php?r=delivery/list-testing-kandidat&id=<?= $or->id ?>" title="Preparing" class="icon-view-edit info-tooltip"></a>
+									<a href="index.php?r=delivery/list-testing-kandidat&id=<?= $or->id ?>" title="Testing" class="icon-view-edit info-tooltip"></a>
 								</td>
 							</tr>
 						<?php endforeach; ?>
