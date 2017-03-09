@@ -35,23 +35,34 @@ $this->title = 'List Kandidat Pembekalan';
 
 					<table style="width:50%">
 						<tr>
-							<th width="30%">No Order</th>
+							<th width="30%">Nama Pembekalan</th>
 							<th width="5%">:</th> 
 							<th width="65%"><?= Html::encode($order->id) ?></th>
 						</tr>
 						<tr>
-							<th>Nama Perusahaan</th>
+							<th>Trainer Pembekalan</th>
 							<th>:</th> 
 							<th><?= Html::encode($order->mitra->namamitra) ?></th>
 						</tr>
 						<tr>
-							<th>Jumlah Kebutuhan</th>
+							<th>Tanggal & Jam Pembekalan</th>
 							<th>:</th> 
 							<th><?= Html::encode($order->qty." ".$order->posisi) ?></th>
 						</tr>
+						<tr>
+							<th>Keterangan :</th>
+							<th>:</th> 
+							<th><?= Html::encode($count) ?> Kandidat</th>
+						</tr>
 
 					</table>
-					</br>
+					<!--  start top-search -->
+					
+					<div id="top-search-left">
+						
+						<button type="button" class="btn btn-primary btn-sm" onclick="location.href='<?= Url::to(['delivery/pilih-kandidat-bekal']) ?>'">Pilih Kandidat</button>
+					</div>
+					
 					<!--  end top-search -->
 					<div class="clear"></div>
 
@@ -73,10 +84,10 @@ $this->title = 'List Kandidat Pembekalan';
 								<td><?= $deliv->kandidatid ?></td>
 								<td><?= $deliv->kandidat->namalengkap ?></td>
 								<td><?= $deliv->kandidat->jabatan ?></td>
-								<td><?=( $deliv->kandidat->flag_member == 'Y') ? "Member" : "Non Member" ?></td>
+								<td><?= $deliv->kandidat->flag_member ?></td>
 								<td class="options-width">
 
-									<a href="<?= Url::to(['delivery/do-bekal', 'id' =>$deliv->id ]) ?>" title="Pembekalan" class="icon-bekal info-tooltip"></a>
+									<a href="<?= Url::to(['delivery/disable-kandidat', 'id' =>$deliv->id ]) ?>" title="Non Aktif" class="icon-disable info-tooltip"></a>
 									
 								</td>
 							</tr>

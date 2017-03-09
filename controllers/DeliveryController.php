@@ -8,11 +8,13 @@ use app\models\Order;
 use app\models\Mitra;
 use app\models\Delivery;
 use app\models\Kandidat;
+use app\models\Pembekalan;
 use yii\data\Pagination;
 use yii\web\UploadedFile;
 use yii\web\User;
 use kartik\mpdf\Pdf;
 use yii\helpers\ArrayHelper;
+use yii\base\Security;
 
 class DeliveryController extends \yii\web\Controller
 {
@@ -312,21 +314,26 @@ class DeliveryController extends \yii\web\Controller
 		return $this->render('formpembekalan', ['model' => $delivery]);
 	}
 
-	public function actionSimpanPembekalan($id)
+	public function actionSimpanPembekalan()
 	{
 
-		$model = Delivery::findOne($id);
+		$model = new Pembekalan();
+		$model->id = Yii::$app->getSecurity()->generateRandomString(20);
+		$model->save();
 
 		$data = Yii::$app->request->post();
 
 		if ($model->load($data) ) {
-			$model->flag_pembekalan = "Y";
-			if($model->save() ){
+			$bekal['date_bekal'] = $model->date_bekal;
+			$bekal['time_bekal'] = $model->time_bekal;
+			$bekal['nama_bekal'] = $model->nama_bekal;
+			$bekal['trainer_bekal'] = $model->trainer_bekal;
+			$bekal['keterangan'] = $model->keterangan;
+			
+			return $this->redirect(['delivery/list-kandidat-pembekalan',$id => $model->id,$databekal=>$bekal]);			
 
-				return $this->redirect(['delivery/list-bekal-kandidat','id' => $model->orderid]);
-			}else{
-				return ;
-			}			
+			//return $this->redirect(['delivery/list-bekal-kandidat','id' => $model->orderid]);
+						
 
 		} else {
 			return $this->render('interviewkandidat', [
@@ -334,6 +341,36 @@ class DeliveryController extends \yii\web\Controller
 				]);
 		}
 		//return $this->render('error', ['model' => $data['Kandidat']['jabatan']]);		
+	}
+
+	public function actionListKandidatPembekalan($id, $databekal){
+		
+		$query = Delivery::find()
+		->With('kandidat')
+		->where(['pembekalan_id' => $id])
+		->andWhere(['flag_pembekalan' => 'Y'])
+		->andWhere(['status' => 'AKTIF']);
+		
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count(),
+			]);
+
+		$delivery = $query->orderBy('id')
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+
+
+		return $this->render('listkanbekal', [
+			'bekal' => $databekal,
+			'delivery' => $delivery,
+			'pagination' => $pagination,
+			]);
+	}
+
+	public function actionPilihKandidatBekal(){
+		
 	}
 
 	public function actionListTesting(){
@@ -455,6 +492,14 @@ class DeliveryController extends \yii\web\Controller
 		
     // return the pdf output as per the destination setting
 		return $pdf->render(); 
+	}
+
+	public function actionBuatPembekalan(){
+
+		$delivery = Delivery::find()->With('kandidat')->where(['id' => $id])->one();
+		
+		return $this->render('formpembekalan', ['model' => $delivery]);
+
 	}
 
 }

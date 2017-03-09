@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Mar 2017 pada 15.58
--- Versi Server: 10.1.9-MariaDB
+-- Generation Time: Mar 09, 2017 at 04:05 PM
+-- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -26,7 +26,7 @@ USE `twowinsistem`;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `delivery`
+-- Table structure for table `delivery`
 --
 
 DROP TABLE IF EXISTS `delivery`;
@@ -44,6 +44,7 @@ CREATE TABLE `delivery` (
   `suratkuning` varchar(100) DEFAULT NULL,
   `pengalamankerja` varchar(100) DEFAULT NULL,
   `flag_pembekalan` varchar(20) DEFAULT 'N',
+  `pembekalan_id` varchar(20) DEFAULT NULL,
   `date_bekal` date DEFAULT NULL,
   `time_bekal` time DEFAULT NULL,
   `nama_bekal` varchar(100) DEFAULT NULL,
@@ -57,22 +58,22 @@ CREATE TABLE `delivery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `delivery`
+-- Dumping data for table `delivery`
 --
 
-INSERT INTO `delivery` (`id`, `orderid`, `kandidatid`, `status`, `flag_checklist`, `ktp`, `lamaran`, `ijazah`, `transkrip`, `kartukel`, `suratkuning`, `pengalamankerja`, `flag_pembekalan`, `date_bekal`, `time_bekal`, `nama_bekal`, `trainer_bekal`, `keterangan`, `flag_test`, `nilai_test`, `tgl_test`, `hasil_test`, `periode_kontrak`) VALUES
-(1, 'sadad', 'asd', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, '2', 'K1', 'NON AKTIF', 'COMPLETE', '', 'v-g0nrFKaUDesert.jpg', 'xwktBraVlnHydrangeas.jpg', '', 'fBDxRghFsqTulips.jpg', '', 'IpmSPU8FDMPenguins.jpg', 'Y', '2017-03-01', '23:56:00', 'asd', 'asda', 'asdad', 'Y', 85, '2017-02-19', 'Lulus', '2017-2019'),
-(6, '3', 'K4', 'NON AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, '3', 'K5', 'AKTIF', 'COMPLETE', 'LerUpRcW2bSmartSelectImage_2017-01-26-00-41-36.jpg', 'WQ6iL-4l8KPenguins.jpg', '', '', '', '', '', 'Y', '2017-02-02', '23:10:00', 'sopan santun bekerja', 'anwar', '', 'Y', 80, '2017-03-01', 'Lulus', '2 tahun'),
-(8, '3', 'K3', 'AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `delivery` (`id`, `orderid`, `kandidatid`, `status`, `flag_checklist`, `ktp`, `lamaran`, `ijazah`, `transkrip`, `kartukel`, `suratkuning`, `pengalamankerja`, `flag_pembekalan`, `pembekalan_id`, `date_bekal`, `time_bekal`, `nama_bekal`, `trainer_bekal`, `keterangan`, `flag_test`, `nilai_test`, `tgl_test`, `hasil_test`, `periode_kontrak`) VALUES
+(1, 'sadad', 'asd', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '2', 'K1', 'NON AKTIF', 'COMPLETE', '', 'v-g0nrFKaUDesert.jpg', 'xwktBraVlnHydrangeas.jpg', '', 'fBDxRghFsqTulips.jpg', '', 'IpmSPU8FDMPenguins.jpg', 'Y', '', '2017-03-01', '23:56:00', 'asd', 'asda', 'asdad', 'Y', 85, '2017-02-19', 'Lulus', '2017-2019'),
+(6, '3', 'K4', 'NON AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, '3', 'K5', 'AKTIF', 'COMPLETE', 'LerUpRcW2bSmartSelectImage_2017-01-26-00-41-36.jpg', 'WQ6iL-4l8KPenguins.jpg', '', '', '', '', '', 'Y', '', '2017-02-02', '23:10:00', 'sopan santun bekerja', 'anwar', '', 'Y', 80, '2017-03-01', 'Lulus', '2 tahun'),
+(8, '3', 'K3', 'AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kandidat`
+-- Table structure for table `kandidat`
 --
 
 DROP TABLE IF EXISTS `kandidat`;
@@ -121,7 +122,7 @@ CREATE TABLE `kandidat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kandidat`
+-- Dumping data for table `kandidat`
 --
 
 INSERT INTO `kandidat` (`id`, `kandidatid`, `namalengkap`, `jenkel`, `status`, `tempatlahir`, `tanggallahir`, `alamat`, `kodepos`, `notelp`, `agama`, `namasekolah`, `jurusan`, `namacomp1`, `jabatan1`, `lamabkrj1`, `namacomp2`, `jabatan2`, `lamabkrj2`, `namacomp3`, `jabatan3`, `lamabkrj3`, `nmbpk`, `nmibu`, `pkrjortu`, `nama_kerabat`, `telp_kerabat`, `msoffice`, `photosh`, `autoca`, `others`, `inggris`, `mengemudi`, `sim`, `fotokandidat`, `jabatan`, `refferer`, `date_add`, `flag_interview`, `flag_member`, `flag_aktif`) VALUES
@@ -134,7 +135,7 @@ INSERT INTO `kandidat` (`id`, `kandidatid`, `namalengkap`, `jenkel`, `status`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `konfigurasi`
+-- Table structure for table `konfigurasi`
 --
 
 DROP TABLE IF EXISTS `konfigurasi`;
@@ -145,7 +146,7 @@ CREATE TABLE `konfigurasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `konfigurasi`
+-- Dumping data for table `konfigurasi`
 --
 
 INSERT INTO `konfigurasi` (`id`, `items`, `nilai`) VALUES
@@ -154,7 +155,7 @@ INSERT INTO `konfigurasi` (`id`, `items`, `nilai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kontrak`
+-- Table structure for table `kontrak`
 --
 
 DROP TABLE IF EXISTS `kontrak`;
@@ -171,7 +172,7 @@ CREATE TABLE `kontrak` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kontrak`
+-- Dumping data for table `kontrak`
 --
 
 INSERT INTO `kontrak` (`id`, `mitraid`, `lampiran`, `penjelasan`, `tahun`, `status`, `periode`, `nokontrak`, `ttd`) VALUES
@@ -180,7 +181,7 @@ INSERT INTO `kontrak` (`id`, `mitraid`, `lampiran`, `penjelasan`, `tahun`, `stat
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mitra`
+-- Table structure for table `mitra`
 --
 
 DROP TABLE IF EXISTS `mitra`;
@@ -205,7 +206,7 @@ CREATE TABLE `mitra` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mitra`
+-- Dumping data for table `mitra`
 --
 
 INSERT INTO `mitra` (`id`, `mitraid`, `namamitra`, `alamatmitra`, `namapic`, `jabatanpic`, `telppic`, `emailpic`, `deskripsi`, `namapictwi`, `emailpictwi`, `status`, `lampiran`, `lampiran2`, `lampiran3`, `lampiran4`, `lampiran5`) VALUES
@@ -216,7 +217,7 @@ INSERT INTO `mitra` (`id`, `mitraid`, `namamitra`, `alamatmitra`, `namapic`, `ja
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mst_biaya`
+-- Table structure for table `mst_biaya`
 --
 
 DROP TABLE IF EXISTS `mst_biaya`;
@@ -227,7 +228,7 @@ CREATE TABLE `mst_biaya` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mst_biaya`
+-- Dumping data for table `mst_biaya`
 --
 
 INSERT INTO `mst_biaya` (`id`, `jenis_bayar`, `biaya`) VALUES
@@ -240,7 +241,7 @@ INSERT INTO `mst_biaya` (`id`, `jenis_bayar`, `biaya`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mst_jabatan`
+-- Table structure for table `mst_jabatan`
 --
 
 DROP TABLE IF EXISTS `mst_jabatan`;
@@ -251,7 +252,7 @@ CREATE TABLE `mst_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mst_jabatan`
+-- Dumping data for table `mst_jabatan`
 --
 
 INSERT INTO `mst_jabatan` (`id`, `nmjabatan`, `keterangan`) VALUES
@@ -262,7 +263,7 @@ INSERT INTO `mst_jabatan` (`id`, `nmjabatan`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `order`
+-- Table structure for table `order`
 --
 
 DROP TABLE IF EXISTS `order`;
@@ -287,7 +288,7 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `order`
+-- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`id`, `mitraid`, `namapictwo`, `kategori`, `posisi`, `qty`, `spesifikasi`, `periode`, `sat_periode`, `tgl_mulai`, `tgl_selesai`, `nilai_kontrak`, `bpjs`, `gaji`, `thr`, `lampiran`, `status`) VALUES
@@ -298,7 +299,7 @@ INSERT INTO `order` (`id`, `mitraid`, `namapictwo`, `kategori`, `posisi`, `qty`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembayaran`
+-- Table structure for table `pembayaran`
 --
 
 DROP TABLE IF EXISTS `pembayaran`;
@@ -315,12 +316,12 @@ CREATE TABLE `pembayaran` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembekalan`
+-- Table structure for table `pembekalan`
 --
 
 DROP TABLE IF EXISTS `pembekalan`;
 CREATE TABLE `pembekalan` (
-  `id` int(20) NOT NULL,
+  `id` varchar(20) NOT NULL,
   `delivery_id` int(20) NOT NULL,
   `date_bekal` date DEFAULT NULL,
   `time_bekal` time DEFAULT NULL,
@@ -332,7 +333,7 @@ CREATE TABLE `pembekalan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `report_test`
+-- Table structure for table `report_test`
 --
 
 DROP TABLE IF EXISTS `report_test`;
@@ -348,7 +349,7 @@ CREATE TABLE `report_test` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tran_jabatan`
+-- Table structure for table `tran_jabatan`
 --
 
 DROP TABLE IF EXISTS `tran_jabatan`;
@@ -360,7 +361,7 @@ CREATE TABLE `tran_jabatan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -373,7 +374,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `auth_key`, `password_reset_token`) VALUES
@@ -504,11 +505,6 @@ ALTER TABLE `order`
 --
 ALTER TABLE `pembayaran`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `pembekalan`
---
-ALTER TABLE `pembekalan`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `report_test`
 --
