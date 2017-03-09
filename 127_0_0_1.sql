@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 08 Mar 2017 pada 15.24
+-- Generation Time: 09 Mar 2017 pada 15.58
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -315,6 +315,23 @@ CREATE TABLE `pembayaran` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pembekalan`
+--
+
+DROP TABLE IF EXISTS `pembekalan`;
+CREATE TABLE `pembekalan` (
+  `id` int(20) NOT NULL,
+  `delivery_id` int(20) NOT NULL,
+  `date_bekal` date DEFAULT NULL,
+  `time_bekal` time DEFAULT NULL,
+  `nama_bekal` varchar(100) DEFAULT NULL,
+  `trainer_bekal` varchar(100) DEFAULT NULL,
+  `keterangan` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `report_test`
 --
 
@@ -421,6 +438,12 @@ ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pembekalan`
+--
+ALTER TABLE `pembekalan`
+  ADD PRIMARY KEY (`id`,`delivery_id`);
+
+--
 -- Indexes for table `report_test`
 --
 ALTER TABLE `report_test`
@@ -481,6 +504,11 @@ ALTER TABLE `order`
 --
 ALTER TABLE `pembayaran`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `pembekalan`
+--
+ALTER TABLE `pembekalan`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `report_test`
 --
