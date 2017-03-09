@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\helpers\Url;
+use app\models\Delivery;
 
 $this->title = 'Pembekalan Delivery';
 
@@ -31,7 +32,12 @@ $this->title = 'Pembekalan Delivery';
 
 					<!--  start top-search -->
 					<div id="top-search">
-					<form class="form-inline" action="<?= Url::to(['order/list-order']); ?>" method="post" >
+						<div align="right" style="padding-bottom: 10px">
+
+							<button type="button" onclick="location.href='<?= Url::to(['delivery/index']); ?>'" class="btn btn-info btn-lg">Isi Pembekalan</button>	
+						</div>
+
+						<form class="form-inline" action="<?= Url::to(['order/list-order']); ?>" method="post" >
 							<div class="form-group">
 								<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
 								<input type="text" name="nilai" class="form-control input-sm" id="exampleInputName2" placeholder="Search">
@@ -56,46 +62,58 @@ $this->title = 'Pembekalan Delivery';
 						<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 							<tr>
 
-								<th class="table-header-repeat line-left minwidth-1"><p>No Order</p>	</th>
+								<th class="table-header-repeat line-left"><p>No Order</p>	</th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Nama Mitra</p></th>
 								<th class="table-header-repeat line-left"><p>QTY</p></th>
 								<th class="table-header-repeat line-left"><p>Posisi</p></th>
+								<th class="table-header-repeat line-left"><p># Belum Pembekalan</p></th>
 								<th class="table-header-repeat line-left"><p>Status</p></th>
-								<th class="table-header-options line-left"><p>Actions</p></th>
+								
 							</tr>
 
 							<?php $count=1;foreach ($order as $or): ?>
-							<tr>
 
+							<?php
+							$count = Delivery::find()
+							->where(['orderid' => $or->id])
+							->andWhere(['status' => 'Aktif'])
+							->andWhere(['flag_pembekalan' => 'N'])
+							->count();
+
+							/** Hide jika semua kandidat sudah dibekali */
+							if($count > 0){
+							?>
+
+							<tr>
+								
 								<td><?= $or->id ?></td>
 								<td><?= $or->mitra->namamitra ?></td>
 								<td><?= $or->qty ?></td>
 								<td><?= $or->posisi ?></td>
+								<td><?= $count ?></td>
 								<td><?= $or->status ?></td>
-								<td class="options-width">
-
-									
-									<a href="index.php?r=delivery/list-bekal-kandidat&id=<?= $or->id ?>" title="Pembekalan" class="icon-view-edit info-tooltip"></a>
-								</td>
+								
 							</tr>
-						<?php endforeach; ?>
-					</table>
-					<!--  end product-table................................... --> 
-				</form>
-			</div>
-			<!--  end content-table  -->
+						<?php } ?>
 
-			<?= LinkPager::widget(['pagination' => $pagination]) ?>
-			
-			
-			
-			<div class="clear"></div>
-
-
+					<?php endforeach; ?>
+				</table>
+				<!--  end product-table................................... --> 
+			</form>
 		</div>
-		<!--  end content-table-inner  -->
-	</td>
-	<td id="tbl-border-right"></td>
+		<!--  end content-table  -->
+
+		<?= LinkPager::widget(['pagination' => $pagination]) ?>
+
+
+
+		<div class="clear"></div>
+
+
+	</div>
+	<!--  end content-table-inner  -->
+</td>
+<td id="tbl-border-right"></td>
 </tr>
 <tr>
 	<th class="sized bottomleft"></th>
