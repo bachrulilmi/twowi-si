@@ -34,7 +34,7 @@ $this->title = 'Pembekalan Delivery';
 					<div id="top-search">
 						<div align="right" style="padding-bottom: 10px">
 
-							<button type="button" onclick="location.href='<?= Url::to(['delivery/index']); ?>'" class="btn btn-info btn-lg">Isi Pembekalan</button>	
+							<button type="button" onclick="location.href='<?= Url::to(['delivery/do-bekal']); ?>'" class="btn btn-info btn-lg">Isi Pembekalan</button>	
 						</div>
 
 						<form class="form-inline" action="<?= Url::to(['order/list-order']); ?>" method="post" >

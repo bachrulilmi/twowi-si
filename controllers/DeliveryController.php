@@ -307,11 +307,11 @@ class DeliveryController extends \yii\web\Controller
 			]);
 	}
 
-	public function actionDoBekal($id) 
+	public function actionDoBekal() 
 	{
-		$delivery = Delivery::find()->With('kandidat')->where(['id' => $id])->one();
+		$delivery = new Pembekalan();
 		
-		return $this->render('formpembekalan', ['model' => $delivery]);
+		return $this->render('form_pembekalan_baru', ['model' => $delivery]);
 	}
 
 	public function actionSimpanPembekalan()
@@ -330,7 +330,7 @@ class DeliveryController extends \yii\web\Controller
 			$bekal['trainer_bekal'] = $model->trainer_bekal;
 			$bekal['keterangan'] = $model->keterangan;
 			
-			return $this->redirect(['delivery/list-kandidat-pembekalan',$id => $model->id,$databekal=>$bekal]);			
+			return $this->redirect(['delivery/list-kandidat-pembekalan','id' => $model->id,'databekal'=>$bekal]);			
 
 			//return $this->redirect(['delivery/list-bekal-kandidat','id' => $model->orderid]);
 						
