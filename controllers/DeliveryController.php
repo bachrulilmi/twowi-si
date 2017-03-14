@@ -319,18 +319,26 @@ class DeliveryController extends \yii\web\Controller
 
 		$model = new Pembekalan();
 		$model->id = Yii::$app->getSecurity()->generateRandomString(20);
-		$model->save();
-
+		
 		$data = Yii::$app->request->post();
 
 		if ($model->load($data) ) {
+			
+
 			$bekal['date_bekal'] = $model->date_bekal;
 			$bekal['time_bekal'] = $model->time_bekal;
 			$bekal['nama_bekal'] = $model->nama_bekal;
 			$bekal['trainer_bekal'] = $model->trainer_bekal;
 			$bekal['keterangan'] = $model->keterangan;
+
+			if($model->save()){
+				return $this->redirect(['delivery/list-kandidat-pembekalan','id' => $model->id,'databekal'=>$bekal]);	
+			}
+			else{
+				return;
+			}
+
 			
-			return $this->redirect(['delivery/list-kandidat-pembekalan','id' => $model->id,'databekal'=>$bekal]);			
 
 			//return $this->redirect(['delivery/list-bekal-kandidat','id' => $model->orderid]);
 						
@@ -343,7 +351,7 @@ class DeliveryController extends \yii\web\Controller
 		//return $this->render('error', ['model' => $data['Kandidat']['jabatan']]);		
 	}
 
-	public function actionListKandidatPembekalan($id, $databekal){
+	public function actionListKandidatPembekalan($id, array $databekal){
 		
 		$query = Delivery::find()
 		->With('kandidat')
@@ -364,13 +372,55 @@ class DeliveryController extends \yii\web\Controller
 
 		return $this->render('listkanbekal', [
 			'bekal' => $databekal,
+			'id' => $id,
 			'delivery' => $delivery,
 			'pagination' => $pagination,
 			]);
 	}
 
-	public function actionPilihKandidatBekal(){
+	public function actionPilihKandidatBekal($id,array $databekal){ 
 		
+		$request = Yii::$app->request;
+		$query = Delivery::find()
+		->with('kandidat')
+		->with('order')
+		->andWhere(['status' => 'AKTIF'])
+		->andWhere(['flag_pembekalan' => 'N'])
+		->andWhere(['like', $request->post('kolom', 'kandidatid'), $request->post('nilai', '')]);
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count(),
+			]);
+
+		$delivery = $query->orderBy('id')
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+
+		return $this->render('pilih_kandidat_bekal', [
+			'delivery' => $delivery,
+			'id' => $id,
+			'bekal' => $databekal,
+			'pagination' => $pagination,
+			]);
+
+	}
+
+	public function actionSimpanKandidatBekal($kandid , array $databekal, $id){
+			
+		$modeldelivery = Delivery::find()->where(['id' => $databekal['delivid']])
+		->andWhere(['kandidatid' => $kandid])->one();
+		$modeldelivery->flag_pembekalan = 'Y';
+		$modeldelivery->pembekalan_id = $id;
+		if($modeldelivery->save()){
+
+			return $this->redirect(['delivery/list-kandidat-pembekalan','id' => $id,'databekal'=>$databekal]);
+		} 
+		else {
+			return $this->render('interviewkandidat', [
+				'model' => $model
+				]);
+		}
 	}
 
 	public function actionListTesting(){
@@ -423,11 +473,11 @@ class DeliveryController extends \yii\web\Controller
 			]);
 	}
 
-	public function actionInputNilai($id) 
+	public function actionInputNilai($id,$order) 
 	{
 		$delivery = Delivery::find()->With('kandidat')->where(['id' => $id])->one();
 		
-		return $this->render('forminputnilai', ['model' => $delivery]);
+		return $this->render('forminputnilai', ['model' => $delivery,'order'=>$order]);
 	}
 
 	public function actionSimpanNilai($id)

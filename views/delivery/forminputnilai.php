@@ -81,7 +81,7 @@ $this->title = 'Form Input Nilai';
 						<div class="form-group">
 							<div class="col-lg-offset-2 col-lg-11">
 								<?= Html::submitButton('Simpan', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-								<button type="button" class="btn btn-danger" onclick="location.href='<?= Url::to(['delivery/list-bekal-kandidat','id' => $model->orderid]) ?>'">Batal</button>
+								<button type="button" class="btn btn-danger" onclick="location.href='<?= Url::to(['delivery/list-testing-kandidat','id' => $order]) ?>'">Batal</button>
 							</div>
 						</div>
 

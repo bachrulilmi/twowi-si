@@ -80,7 +80,7 @@ $this->title = 'List Kandidat Testing';
 
 									<a href="<?= Url::to(['delivery/print-pengantar', 'id' =>$deliv->kandidatid ]) ?>" title="Print Surat Pengantar" class="icon-cetak-cv info-tooltip"></a>
 
-									<a href="<?= Url::to(['delivery/input-nilai', 'id' =>$deliv->id ]) ?>" title="Input Nilai Test" class="icon-test info-tooltip"></a>
+									<a href="<?= Url::to(['delivery/input-nilai', 'id' =>$deliv->id, 'order'=>$order->id ]) ?>" title="Input Nilai Test" class="icon-test info-tooltip"></a>
 									
 								</td>
 							</tr>

@@ -79,4 +79,8 @@ class Order extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Mitra::className(), ['id' => 'mitraid']);
     }
+
+    public function getDelivery(){
+        return $this->hasMany(Delivery::className(), ['orderid' => 'id']);
+    }
 }

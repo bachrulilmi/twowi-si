@@ -20,6 +20,7 @@ use Yii;
  * @property string $suratkuning
  * @property string $pengalamankerja
  * @property string $flag_pembekalan
+ * @property string $pembekalan_id
  * @property string $date_bekal
  * @property string $time_bekal
  * @property string $nama_bekal
@@ -49,7 +50,7 @@ class Delivery extends \yii\db\ActiveRecord
         return [
         [['date_bekal', 'time_bekal', 'tgl_test'], 'safe'],
         [['nilai_test'], 'integer'],
-        [['orderid', 'kandidatid', 'status', 'flag_checklist', 'flag_pembekalan', 'flag_test', 'hasil_test', 'periode_kontrak'], 'string', 'max' => 20],
+        [['orderid', 'kandidatid', 'status', 'flag_checklist', 'flag_pembekalan', 'pembekalan_id', 'flag_test', 'hasil_test', 'periode_kontrak'], 'string', 'max' => 20],
         [['ktp', 'lamaran', 'ijazah', 'transkrip', 'kartukel', 'suratkuning', 'pengalamankerja', 'nama_bekal', 'trainer_bekal'], 'string', 'max' => 100],
         [['keterangan'], 'string', 'max' => 200],
         ];
@@ -74,6 +75,7 @@ class Delivery extends \yii\db\ActiveRecord
         'suratkuning' => 'Suratkuning',
         'pengalamankerja' => 'Pengalamankerja',
         'flag_pembekalan' => 'Flag Pembekalan',
+        'pembekalan_id' => 'Pembekalan ID',
         'date_bekal' => 'Date Bekal',
         'time_bekal' => 'Time Bekal',
         'nama_bekal' => 'Nama Bekal',
@@ -87,8 +89,13 @@ class Delivery extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getKandidat()  
-    {  
-       return $this->hasOne(Kandidat::className(), ['kandidatid' => 'kandidatid']);  
-   } 
+    public function getKandidat(){  
+      return $this->hasOne(Kandidat::className(), ['kandidatid' => 'kandidatid']);  
+  }  
+
+    public function getOrder(){
+        return $this->hasOne(Order::className(), ['id' => 'orderid']);
+
+  } 
+       
 }

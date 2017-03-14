@@ -37,22 +37,22 @@ $this->title = 'List Kandidat Pembekalan';
 						<tr>
 							<th width="30%">Nama Pembekalan</th>
 							<th width="5%">:</th> 
-							<th width="65%"><?= Html::encode($order->id) ?></th>
+							<th width="65%"><?= Html::encode($bekal['nama_bekal']) ?></th>
 						</tr>
 						<tr>
 							<th>Trainer Pembekalan</th>
 							<th>:</th> 
-							<th><?= Html::encode($order->mitra->namamitra) ?></th>
+							<th><?= Html::encode($bekal['trainer_bekal']) ?></th>
 						</tr>
 						<tr>
 							<th>Tanggal & Jam Pembekalan</th>
 							<th>:</th> 
-							<th><?= Html::encode($order->qty." ".$order->posisi) ?></th>
+							<th><?= Html::encode($bekal['date_bekal']." ".$bekal['time_bekal']) ?></th>
 						</tr>
 						<tr>
 							<th>Keterangan :</th>
 							<th>:</th> 
-							<th><?= Html::encode($count) ?> Kandidat</th>
+							<th><?= Html::encode($bekal['keterangan']) ?></th>
 						</tr>
 
 					</table>
@@ -60,7 +60,7 @@ $this->title = 'List Kandidat Pembekalan';
 					
 					<div id="top-search-left">
 						
-						<button type="button" class="btn btn-primary btn-sm" onclick="location.href='<?= Url::to(['delivery/pilih-kandidat-bekal']) ?>'">Pilih Kandidat</button>
+						<button type="button" class="btn btn-primary btn-sm" onclick="location.href='<?= Url::to(['delivery/pilih-kandidat-bekal','id'=>$id, 'databekal'=>$bekal]) ?>'">Pilih Kandidat Pembekalan</button>
 					</div>
 					
 					<!--  end top-search -->
@@ -76,7 +76,7 @@ $this->title = 'List Kandidat Pembekalan';
 								<th class="table-header-repeat line-left minwidth-1"><p>Posisi</p></th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Status Member</p></th>
 
-								<th class="table-header-options line-left"><p>Actions</p></th>
+								
 							</tr>
 							<?php $count=1;foreach ($delivery as $deliv): ?>
 							<tr>
@@ -85,11 +85,7 @@ $this->title = 'List Kandidat Pembekalan';
 								<td><?= $deliv->kandidat->namalengkap ?></td>
 								<td><?= $deliv->kandidat->jabatan ?></td>
 								<td><?= $deliv->kandidat->flag_member ?></td>
-								<td class="options-width">
-
-									<a href="<?= Url::to(['delivery/disable-kandidat', 'id' =>$deliv->id ]) ?>" title="Non Aktif" class="icon-disable info-tooltip"></a>
-									
-								</td>
+								
 							</tr>
 						<?php endforeach; ?>
 					</table>

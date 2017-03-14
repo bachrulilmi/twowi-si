@@ -31,7 +31,7 @@ class Pembekalan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['delivery_id'], 'required'],
+            
             [['delivery_id'], 'integer'],
             [['date_bekal', 'time_bekal'], 'safe'],
             [['nama_bekal', 'trainer_bekal'], 'string', 'max' => 100],
