@@ -363,7 +363,7 @@ AppAsset::register($this);
 <div id="footer">
 	<!--  start footer-left -->
 	<div id="footer-left">
-		Powered by &copy; Realtek Teknologi <?= date('Y') ?> </div>
+		Powered by &copy; Alhakimlab <?= date('Y') ?> </div>
 		<!--  end footer-left -->
 		<div class="clear">&nbsp;</div>
 	</div>

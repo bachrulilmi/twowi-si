@@ -387,6 +387,7 @@ class DeliveryController extends \yii\web\Controller
 		->andWhere(['status' => 'AKTIF'])
 		->andWhere(['flag_pembekalan' => 'N'])
 		->andWhere(['like', $request->post('kolom', 'kandidatid'), $request->post('nilai', '')]);
+
 		$pagination = new Pagination([
 			'defaultPageSize' => 5,
 			'totalCount' => $query->count(),

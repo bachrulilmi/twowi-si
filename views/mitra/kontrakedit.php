@@ -42,15 +42,16 @@ $this->title = 'Ubah Kontrak';
 					'id' => 'login-form',
 					'layout' => 'horizontal',
 					'fieldConfig' => [
-					'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-					'labelOptions' => ['class' => 'col-lg-1 control-label'],
+					'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
+					'labelOptions' => ['class' => 'col-lg-2 control-label'],
 					],
 					]); ?>
 					<?= $form->field($mitra, 'id')->hiddenInput()->label(false)?>
 					<?= $form->field($mitra, 'namamitra')->textInput(['readonly' => true])->label('Nama Mitra') ?>
 					<?= $form->field($kontrak, 'nokontrak') ->label('Nomor Kontrak/MoU')?>
     				<?= $form->field($kontrak, 'ttd') ->label('Penandatangan Kontrak')?>
-					<?= $form->field($kontrak, 'tahun')->textInput(['autofocus' => true])->label('Tahun Kontrak') ?>
+					<?= $form->field($kontrak, 'tahun_mulai')->textInput(['autofocus' => true])->label('Tahun Mulai Kontrak') ?>
+					<?= $form->field($kontrak, 'tahun_selesai')->textInput()->label('Tahun Selesai Kontrak') ?>
 					<?= $form->field($kontrak, 'penjelasan') ->label('Keterangan')?>
 					<?= $form->field($kontrak, 'status')->dropdownList([
 						'Aktif' => 'Aktif', 
@@ -59,19 +60,19 @@ $this->title = 'Ubah Kontrak';
 						<?= $form->field($kontrak, 'periode')->label('Periode Kontrak')?>
 						
 						<div class="form-group field-kontrak-lampiran">
-							<label class="col-lg-1 control-label" for="kontrak-lampiran">Lampiran Kontrak</label>
-							<div class="col-lg-8">
+							<label class="col-lg-2 control-label" for="kontrak-lampiran">Lampiran Kontrak</label>
+							<div class="col-lg-3">
 								<input type="hidden" name="Kontrak[lampiran]" value="<?=$kontrak->lampiran?>">
 								<input type="file" id="kontrak-lampiran" name="Kontrak[lampiran]" value="<?=$kontrak->lampiran?>">
 								<button type="button" onclick="window.open('<?= Url::base() . "/uploads/".$kontrak->lampiran ?>')" class="btn btn-success">Download Lampiran Sebelumnya</button>
 							</div>
-							<div class="col-lg-8">
+							<div class="col-lg-7">
 								<div class="help-block help-block-error "></div>
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<div class="col-lg-offset-1 col-lg-11">
+							<div class="col-lg-offset-2 col-lg-11">
 
 								<?= Html::submitButton('Simpan', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
 								<button type="button" onclick="history.go(-1);" class="btn btn-danger">Batal</button>

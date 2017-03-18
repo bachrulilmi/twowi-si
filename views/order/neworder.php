@@ -98,7 +98,7 @@ $this->title = 'Order Baru';
             <div class="col-lg-offset-2 col-lg-11">
                 <?= Html::submitButton('Simpan', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                             
-                <button type="button" class="btn btn-danger" onclick="location.href='<?= Url::to(['order/list' ]) ?>'">Batal</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='<?= Url::to(['order/list-order' ]) ?>'">Batal</button>
             </div>
         </div>
 

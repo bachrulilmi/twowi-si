@@ -84,10 +84,13 @@ $this->title = 'Database Kandidat';
 					<a href="index.php?r=kandidat/edit&id=<?= $kan->id ?>" title="View/Edit" class="icon-view-edit info-tooltip"></a>
 					<?php 
 						if($kan->flag_member=='Y'){
-							echo '<a href="index.php?r=kandidat/history-bayar&id='.$kan->id.'" title="History Pembayaran" class="icon-history-bayar info-tooltip"></a>';
+							echo '<a href="index.php?r=kandidat/history-bayar&id='.$kan->id.'" title="History Pembayaran" class="icon-history-bayar info-tooltip"></a>
+							<a href="index.php?r=kandidat/turun-nonmember&id='. $kan->id .'" title="Turunkan ke Non Member" class="icon-non-member info-tooltip"></a>';
+
 						}
 					?>
 					<a href="index.php?r=kandidat/list-test&id=<?= $kan->id ?>" title="Input Nilai Test" class="icon-test info-tooltip"></a>
+
 					</td>
 				</tr>
 				<?php endforeach; ?>

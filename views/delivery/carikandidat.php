@@ -30,7 +30,7 @@ $this->title = 'Cari Kandidat';
 			
 				<!--  start top-search -->
 					<div id="top-search">
-					<form class="form-inline" action="<?= Url::to(['delivery/new-kandidat']); ?>" method="post" >
+					<form class="form-inline" action="<?= Url::to(['delivery/new-kandidat','id'=>$order]); ?>" method="post" >
 							<div class="form-group">
 								<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
 								<input type="text" name="nilai" class="form-control input-sm" id="exampleInputName2" placeholder="Search">
@@ -39,7 +39,7 @@ $this->title = 'Cari Kandidat';
 								<select class="form-control input-sm" name="kolom">
 									<option value="kandidatid">No Kandidat</option>
 									<option value="namalengkap">Nama Kandidat</option>
-									<option value="posisi">Posisi</option>
+									<option value="jabatan">Posisi</option>
 									<option value="flag_member">Status Member</option>
 
 								</select>

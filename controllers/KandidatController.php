@@ -176,7 +176,7 @@ class KandidatController extends \yii\web\Controller
 		$kandidat = Kandidat::findOne($id);
 		$bayar = Pembayaran::find()->where(['kandidatid' => $id])->one();
 		$tipebayar = MstBiaya::findOne($bayar->jenisbayar);
-			
+
 
 		return $this->render('historybayar', ['model' => $kandidat,'model2'=>$bayar,'model3'=>$tipebayar]);
 	}
@@ -232,7 +232,7 @@ class KandidatController extends \yii\web\Controller
 					return ;
 				}
 			}else{
-					if($model->save() ){
+				if($model->save() ){
 					
 					return $this->redirect(['kandidat/list']);
 				}else{
@@ -277,7 +277,7 @@ class KandidatController extends \yii\web\Controller
 					return $this->redirect(['google.com']);;
 				}
 			}else{
-					if($model->save(false) ){
+				if($model->save(false) ){
 					
 					return $this->redirect(['kandidat/list-all']);
 				}else{
@@ -518,13 +518,13 @@ class KandidatController extends \yii\web\Controller
 			
 			$model2->kandidatid=$id;
 			
-				
-				if($model2->save()){
-					
-					return $this->redirect(['kandidat/list-test','id' => $id]);
-				}else{
-					return ;
-				}
+
+			if($model2->save()){
+
+				return $this->redirect(['kandidat/list-test','id' => $id]);
+			}else{
+				return ;
+			}
 			
 			
 
@@ -580,6 +580,30 @@ class KandidatController extends \yii\web\Controller
 			return $this->render('error', ['model' => $model->errors]);
 		}
 		
+	}
+
+	public function actionTurunNonmember($id){
+		$kandidat = Kandidat::findOne($id);
+		
+		return $this->render('turunnonmember', ['model' => $kandidat]);
+	}
+
+	public function actionUpdateNonmember($id){
+
+		$model = Kandidat::findOne($id);
+		$model->flag_member = 'N';
+		$data = Yii::$app->request->post();
+
+		
+		if ($model->load($data) && $model->save()) {
+
+			return $this->redirect(['kandidat/list-all']);
+			
+		}else{
+
+		}
+
+
 	}
 
 	public function actionGetHarga(){

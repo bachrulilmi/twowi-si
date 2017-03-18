@@ -42,15 +42,16 @@ $this->title = 'Kontrak Baru';
         'id' => 'login-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-2 control-label'],
         ],
     ]); ?>
     	<?= $form->field($model, 'mitraid')->hiddenInput()->label(false)?>
     	<?= $form->field($model, 'namamitra')->textInput(['readonly' => true])->label('Nama Mitra') ?>
-    	<?= $form->field($model2, 'nokontrak') ->label('Nomor Kontrak/MoU')?>
+    	<?= $form->field($model2, 'nokontrak')->textInput(['autofocus' => true]) ->label('Nomor Kontrak/MoU')?>
     	<?= $form->field($model2, 'ttd') ->label('Penandatangan Kontrak')?>
-        <?= $form->field($model2, 'tahun')->textInput(['autofocus' => true])->label('Tahun Kontrak') ?>
+        <?= $form->field($model2, 'tahun_mulai')->label('Tahun Mulai Kontrak') ?>
+        <?= $form->field($model2, 'tahun_selesai')->textInput()->label('Tahun Selesai Kontrak') ?>
 		<?= $form->field($model2, 'penjelasan') ->label('Keterangan')?>
 		<?= $form->field($model2, 'status')->dropdownList([
 			'Aktif' => 'Aktif', 
@@ -60,7 +61,7 @@ $this->title = 'Kontrak Baru';
 		<?= $form->field($model2, 'lampiran')->fileInput()->label('Lampiran Kontrak') ?>
 
         <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
+            <div class="col-lg-offset-2 col-lg-11">
                 <?= Html::submitButton('Simpan', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 <?= Html::resetButton('Reset', ['class' => 'btn btn-danger', 'name' => 'login-button']) ?>
             </div>

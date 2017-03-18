@@ -48,6 +48,7 @@ use Yii;
  * @property string $flag_interview
  * @property string $flag_member
  * @property string $flag_aktif
+ * @property string $reason_nonmember
  */
 class Kandidat extends \yii\db\ActiveRecord
 {
@@ -72,6 +73,7 @@ class Kandidat extends \yii\db\ActiveRecord
             [['namalengkap', 'tempatlahir', 'namasekolah', 'jurusan', 'nmbpk', 'nmibu', 'pkrjortu', 'fotokandidat', 'jabatan'], 'string', 'max' => 100],
             [['jenkel', 'status', 'kodepos', 'agama', 'lamabkrj1', 'lamabkrj2', 'lamabkrj3', 'telp_kerabat', 'msoffice', 'photosh', 'autoca', 'inggris', 'mengemudi', 'sim', 'flag_interview', 'flag_member', 'flag_aktif'], 'string', 'max' => 20],
             [['notelp', 'namacomp1', 'jabatan1', 'namacomp2', 'jabatan2', 'namacomp3', 'jabatan3', 'nama_kerabat', 'others', 'refferer'], 'string', 'max' => 50],
+            [['reason_nonmember'], 'string', 'max' => 200],
         ];
     }
 
@@ -122,6 +124,7 @@ class Kandidat extends \yii\db\ActiveRecord
             'flag_interview' => 'Flag Interview',
             'flag_member' => 'Flag Member',
             'flag_aktif' => 'Flag Aktif',
+            'reason_nonmember' => 'Reason Nonmember',
         ];
     }
 

@@ -37,7 +37,7 @@ $this->title = 'Pembekalan Delivery';
 							<button type="button" onclick="location.href='<?= Url::to(['delivery/do-bekal']); ?>'" class="btn btn-info btn-lg">Isi Pembekalan</button>	
 						</div>
 
-						<form class="form-inline" action="<?= Url::to(['order/list-order']); ?>" method="post" >
+						<form class="form-inline" action="<?= Url::to(['delivery/list-pembekalan']); ?>" method="post" >
 							<div class="form-group">
 								<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
 								<input type="text" name="nilai" class="form-control input-sm" id="exampleInputName2" placeholder="Search">
@@ -46,6 +46,7 @@ $this->title = 'Pembekalan Delivery';
 								<select class="form-control input-sm" name="kolom">
 									
 									<option value="status">Status</option>
+									<option value="id">Order ID</option>
 
 								</select>
 

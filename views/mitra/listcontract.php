@@ -60,7 +60,7 @@ $this->title = 'List Kontrak';
 						<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 							<tr>
 
-								<th class="table-header-repeat line-left minwidth-1"><p>Tahun</p>	</th>
+								<th class="table-header-repeat line-left minwidth-1"><p>Tahun Mulai Kontrak</p>	</th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Penjelasan</p></th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Periode</p></th>
 
@@ -69,7 +69,7 @@ $this->title = 'List Kontrak';
 							<?php $count=1;foreach ($kontrak as $mit): ?>
 							<tr>
 
-								<td><?= $mit->tahun ?></td>
+								<td><?= $mit->tahun_mulai ?></td>
 								<td><?= $mit->penjelasan ?></td>
 								<td><?= $mit->periode ?></td>
 								<td class="options-width">

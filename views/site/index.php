@@ -9,7 +9,7 @@ $this->title = 'Welcome';
     <div class="jumbotron">
         <h1>Selamat Datang</h1>
 
-        <p class="lead">Two Win Indonesia</p>
+        <p class="lead">PT. Two Win Indonesia</p>
 
         
     </div>
