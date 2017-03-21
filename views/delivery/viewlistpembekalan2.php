@@ -4,7 +4,7 @@ use yii\widgets\LinkPager;
 use yii\helpers\Url;
 
 
-$this->title = 'List Kandidat Order';
+$this->title = 'List Pembekalan';
 ?>
 
 
@@ -35,36 +35,23 @@ $this->title = 'List Kandidat Order';
 
 					<table style="width:50%">
 						<tr>
-							<th width="30%">No Order</th>
+							<th width="30%">Nama Pembekalan</th>
 							<th width="5%">:</th> 
-							<th width="65%"><?= Html::encode($order->id) ?></th>
+							<th width="65%"><?= Html::encode($bekal->nama_bekal) ?></th>
 						</tr>
 						<tr>
-							<th>Nama Perusahaan</th>
+							<th>Nama Trainer</th>
 							<th>:</th> 
-							<th><?= Html::encode($order->mitra->namamitra) ?></th>
+							<th><?= Html::encode($bekal->trainer_bekal) ?></th>
 						</tr>
 						<tr>
-							<th>Jumlah Kebutuhan</th>
+							<th>Tanggal & Waktu</th>
 							<th>:</th> 
-							<th><?= Html::encode($order->qty." ".$order->posisi) ?></th>
-						</tr>
-						<tr>
-							<th>Jumlah Yang Sudah Dipilih :</th>
-							<th>:</th> 
-							<th><?= Html::encode($count) ?> Kandidat</th>
+							<th><?= Html::encode($bekal->date_bekal." ".$bekal->time_bekal) ?></th>
 						</tr>
 
 					</table>
-					<!--  start top-search -->
-					<?php
-					if($order->qty > $count){
-					?>
-					<div id="top-search-left">
-						
-						<button type="button" class="btn btn-primary btn-sm" onclick="location.href='<?= Url::to(['delivery/new-kandidat', 'id' =>$order->id ]) ?>'">Kandidat Baru</button>
-					</div>
-					<?php } ?>
+					</br>
 					<!--  end top-search -->
 					<div class="clear"></div>
 
@@ -78,20 +65,16 @@ $this->title = 'List Kandidat Order';
 								<th class="table-header-repeat line-left minwidth-1"><p>Posisi</p></th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Status Member</p></th>
 
-								<th class="table-header-options line-left"><p>Actions</p></th>
+								
 							</tr>
-							<?php $count=1;foreach ($delivery as $deliv): ?>
+							<?php $count=1;foreach ($deliv as $del): ?>
 							<tr>
 
-								<td><?= $deliv->kandidatid ?></td>
-								<td><?= $deliv->kandidat->namalengkap ?></td>
-								<td><?= $deliv->kandidat->jabatan ?></td>
-								<td><?= ( $deliv->kandidat->flag_member == 'Y') ? "Member" : "Non Member" ?></td>
-								<td class="options-width">
-
-									<a href="<?= Url::to(['delivery/disable-kandidat', 'id' =>$deliv->id ]) ?>" title="Non Aktif" class="icon-disable info-tooltip"></a>
-									
-								</td>
+								<td><?= $del->kandidatid ?></td>
+								<td><?= $del->kandidat->namalengkap ?></td>
+								<td><?= $del->kandidat->jabatan ?></td>
+								<td><?=( $del->kandidat->flag_member == 'Y') ? "Member" : "Non Member" ?></td>
+								
 							</tr>
 						<?php endforeach; ?>
 					</table>

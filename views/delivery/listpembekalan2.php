@@ -34,7 +34,7 @@ $this->title = 'Pembekalan Delivery';
 					<div id="top-search">
 						<div align="right" style="padding-bottom: 10px">
 
-							<button type="button" onclick="location.href='<?= Url::to(['delivery/list-pembekalan2']); ?>'" class="btn btn-info btn-lg">Isi Pembekalan</button>	
+							<button type="button" onclick="location.href='<?= Url::to(['delivery/do-bekal']); ?>'" class="btn btn-info btn-lg">Buat Pembekalan Baru</button>	
 						</div>
 
 						<form class="form-inline" action="<?= Url::to(['delivery/list-pembekalan']); ?>" method="post" >
@@ -63,39 +63,34 @@ $this->title = 'Pembekalan Delivery';
 						<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 							<tr>
 
-								<th class="table-header-repeat line-left"><p>No Order</p>	</th>
-								<th class="table-header-repeat line-left minwidth-1"><p>Nama Mitra</p></th>
-								<th class="table-header-repeat line-left"><p>QTY</p></th>
-								<th class="table-header-repeat line-left"><p>Posisi</p></th>
-								<th class="table-header-repeat line-left"><p># Belum Pembekalan</p></th>
-								<th class="table-header-repeat line-left"><p>Status</p></th>
+								<th class="table-header-repeat line-left"><p>Nama Pembekalan</p>	</th>
+								<th class="table-header-repeat line-left minwidth-1"><p>Nama Trainer</p></th>
+								<th class="table-header-repeat line-left"><p>Tanggal & Waktu</p></th>
+								<th class="table-header-repeat line-left"><p>Keterangan</p></th>
+								
+								<th class="table-header-repeat line-left"><p>Action</p></th>
 								
 							</tr>
 
 							<?php $count=1;foreach ($order as $or): ?>
 
-							<?php
-							$count = Delivery::find()
-							->where(['orderid' => $or->id])
-							->andWhere(['status' => 'Aktif'])
-							->andWhere(['flag_pembekalan' => 'N'])
-							->count();
-
-							/** Hide jika semua kandidat sudah dibekali */
-							if($count > 0){
-							?>
+							
 
 							<tr>
 								
-								<td><?= $or->id ?></td>
-								<td><?= $or->mitra->namamitra ?></td>
-								<td><?= $or->qty ?></td>
-								<td><?= $or->posisi ?></td>
-								<td><?= $count ?></td>
-								<td><?= $or->status ?></td>
+								<td><?= $or->nama_bekal ?></td>
+								<td><?= $or->trainer_bekal ?></td>
+								<td><?= $or->date_bekal. " ".$or->time_bekal ?></td>
+								<td><?= $or->keterangan ?></td>
+								
+								<td class="options-width">
+
+									<a href="<?= Url::to(['delivery/view-list-bekal2', 'id' =>$or->id ]) ?>" title="Tambahkan kandidat untuk pembekalan" class="icon-add-people info-tooltip"></a>
+									
+								</td>
 								
 							</tr>
-						<?php } ?>
+						
 
 					<?php endforeach; ?>
 				</table>

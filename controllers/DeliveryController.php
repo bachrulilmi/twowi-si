@@ -553,4 +553,37 @@ class DeliveryController extends \yii\web\Controller
 
 	}
 
+	public function actionListPembekalan2(){
+			
+		$query = Pembekalan::find();	
+
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $query->count(),
+			]);
+
+		$order = $query->orderBy('id')
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+
+
+		return $this->render('listpembekalan2', [
+			'order' => $order,
+			'pagination' => $pagination,
+			]);
+	}
+
+	public function actionViewListBekal2($id){
+		$bekal = Pembekalan::find()->where(['id' => $id])->one();
+		
+		$databekal['date_bekal'] = $bekal->date_bekal;
+		$databekal['time_bekal'] = $bekal->time_bekal;
+		$databekal['nama_bekal'] = $bekal->nama_bekal;
+		$databekal['trainer_bekal'] = $bekal->trainer_bekal;
+		$databekal['keterangan'] = $bekal->keterangan;
+
+		return $this->redirect(['delivery/list-kandidat-pembekalan','id'=>$id,'databekal'=>$databekal]);
+	}
+
 }

@@ -84,7 +84,7 @@ $this->title = 'List Kandidat Pembekalan';
 								<td><?= $deliv->kandidatid ?></td>
 								<td><?= $deliv->kandidat->namalengkap ?></td>
 								<td><?= $deliv->kandidat->jabatan ?></td>
-								<td><?= $deliv->kandidat->flag_member ?></td>
+								<td><?= ( $deliv->kandidat->flag_member == 'Y') ? "Member" : "Non Member" ?></td>
 								
 							</tr>
 						<?php endforeach; ?>

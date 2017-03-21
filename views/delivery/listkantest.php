@@ -78,7 +78,7 @@ $this->title = 'List Kandidat Testing';
 								<td><?= $deliv->hasil_test ?></td>
 								<td class="options-width">
 
-									<a href="<?= Url::to(['delivery/print-pengantar', 'id' =>$deliv->kandidatid ]) ?>" title="Print Surat Pengantar" class="icon-cetak-cv info-tooltip"></a>
+									<a href="<?= Url::to(['delivery/print-pengantar', 'id' =>$deliv->kandidatid ]) ?>" target="_blank" title="Print Surat Pengantar" class="icon-cetak-cv info-tooltip"></a>
 
 									<a href="<?= Url::to(['delivery/input-nilai', 'id' =>$deliv->id, 'order'=>$order->id ]) ?>" title="Input Nilai Test" class="icon-test info-tooltip"></a>
 									

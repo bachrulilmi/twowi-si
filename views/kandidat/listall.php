@@ -80,7 +80,7 @@ $this->title = 'Database Kandidat';
 					<td><?= $kan->jurusan ?></td>
 					<td class="options-width">
 					<a href="index.php?r=kandidat/disable&id=<?= $kan->id ?>" title="Disable" class="icon-disable info-tooltip"></a>
-					<a href="index.php?r=kandidat/pdf&id=<?= $kan->id ?>" title="Generate CV" class="icon-cetak-cv info-tooltip"></a>
+					<a href="index.php?r=kandidat/pdf&id=<?= $kan->id ?>" target="_blank" title="Generate CV" class="icon-cetak-cv info-tooltip"></a>
 					<a href="index.php?r=kandidat/edit&id=<?= $kan->id ?>" title="View/Edit" class="icon-view-edit info-tooltip"></a>
 					<?php 
 						if($kan->flag_member=='Y'){
