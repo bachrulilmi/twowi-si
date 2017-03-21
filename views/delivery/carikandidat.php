@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\helpers\Url;
+use app\models\Delivery;
 
 $this->title = 'Cari Kandidat';
 ?>
@@ -67,6 +68,13 @@ $this->title = 'Cari Kandidat';
 				
 				<?php $count=1;foreach ($kandidat as $kan): ?>
 				<?php
+
+				$query = Delivery::find()->where(['kandidatid' => $kan->kandidatid])->andWhere(['status' => 'AKTIF'])->count();
+				if($query == 0){
+					//pengecekan kandidat yang sudah diorder
+				
+				?>
+				<?php
 					if($kan->flag_member=='Y'){
 						$member = "Member";
 					}else{
@@ -85,6 +93,8 @@ $this->title = 'Cari Kandidat';
 					<a href="<?= Url::to(['delivery/choose', 'kanid' =>$kan->kandidatid,'orderid'=>$order ]) ?>" title="Pilih Kandidat" class="icon-pilih info-tooltip"></a>
 					</td>
 				</tr>
+
+				<?php } //akhir dari pengecekan kandidat yang sudah di order?>
 				<?php endforeach; ?>
 				</table>
 				<!--  end product-table................................... --> 
