@@ -70,7 +70,7 @@ $this->title = 'Preparing Delivery';
 							<tr>
 								<?php
 								$count = Delivery::find()
-								->where(['orderid' => $or->id])->count();
+								->where(['orderid' => $or->id])->andWhere(['status' => 'AKTIF'])->count();
 								 ?>
 								<td><?= $or->id ?></td>
 								<td><?= $or->mitra->namamitra ?></td>
