@@ -32,10 +32,14 @@ class OrderController extends \yii\web\Controller
 	}
 	public function actionSimpan()
 	{
+		$bpjs = array();
 		$order = new Order();
 		$request = Yii::$app->request->post();
 		$bpjs = $request['Order']['bpjs'];
-		$bpjs = implode(',',$bpjs);
+		if(!empty($bpjs)){
+			$bpjs = implode(',',$bpjs);	
+		}
+		
 		$file = UploadedFile::getInstance($order, 'lampiran');
 		if($order->load($request))
 		{
@@ -108,8 +112,9 @@ public function actionUpdate($id)
 
 	$data = Yii::$app->request->post();
 	$bpjs = $data['Order']['bpjs'];
+	if(!empty($bpjs)){
 	$bpjs = implode(',',$bpjs);
-
+	}
 
 	if ($model->load($data) ) {
 
