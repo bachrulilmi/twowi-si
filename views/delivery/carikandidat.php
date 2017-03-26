@@ -67,13 +67,7 @@ $this->title = 'Cari Kandidat';
 				</tr>
 				
 				<?php $count=1;foreach ($kandidat as $kan): ?>
-				<?php
-
-				$query = Delivery::find()->where(['kandidatid' => $kan->kandidatid])->andWhere(['status' => 'AKTIF'])->count();
-				if($query == 0){
-					//pengecekan kandidat yang sudah diorder
 				
-				?>
 				<?php
 					if($kan->flag_member=='Y'){
 						$member = "Member";
@@ -94,7 +88,7 @@ $this->title = 'Cari Kandidat';
 					</td>
 				</tr>
 
-				<?php } //akhir dari pengecekan kandidat yang sudah di order?>
+				
 				<?php endforeach; ?>
 				</table>
 				<!--  end product-table................................... --> 

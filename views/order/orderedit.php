@@ -92,7 +92,18 @@ $this->title = 'Edit Order';
 				'Non THR' => 'Non THR',				
 			])->label('THR');
 		?>
-		<?= $form->field($model, 'lampiran')->fileInput()->label('Lampiran Dokumen') ?>
+		
+		<div class="form-group field-order-lampiran">
+						<label class="col-lg-2 control-label" for="order-lampiran">Lampiran Dokumen</label>
+						<div class="col-lg-3">
+							<input type="hidden" name="Order[lampiran]" value="<?=$model->lampiran?>">
+							<input type="file" id="order-lampiran" name="Order[lampiran]" value="<?=$model->lampiran?>">
+							<?php if($model->lampiran <> ""){ ?><button type="button" onclick="window.open('<?= Url::base() . "/orders/".$model->lampiran ?>')" class="btn btn-success">Download Lampiran Sebelumnya</button><?php }?>
+						</div>
+						<div class="col-lg-7">
+							<div class="help-block help-block-error "></div>
+						</div>
+					</div>
 
         <div class="form-group">
             <div class="col-lg-offset-2 col-lg-11">

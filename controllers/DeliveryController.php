@@ -91,7 +91,9 @@ class DeliveryController extends \yii\web\Controller
 		
 		
 		$request = Yii::$app->request;
+		$sub = Delivery::find()->select('kandidatid')->where(['status'=>'AKTIF']);
 		$query = Kandidat::find()
+		->where(['not in','kandidatid',$sub])
 		->andWhere(['flag_aktif' => 'Y'])
 		->andWhere(['flag_interview' => 'Y'])
 		->andWhere(['like', $request->post('kolom', 'kandidatid'), $request->post('nilai', '')]);
@@ -491,7 +493,7 @@ class DeliveryController extends \yii\web\Controller
 		if ($model->load($data) ) {
 			$model->flag_test = "Y";
 			if($model->save() ){
-
+				$this->checkstatus($model->orderid);
 				return $this->redirect(['delivery/list-testing-kandidat','id' => $model->orderid]);
 			}else{
 				return ;
@@ -503,6 +505,18 @@ class DeliveryController extends \yii\web\Controller
 				]);
 		}
 		//return $this->render('error', ['model' => $data['Kandidat']['jabatan']]);		
+	}
+
+	public function checkstatus($id){
+		$jmlorder = Order::find()->where(['id'=>$id])->count();
+		$jmldeliv = Delivery::find()->where(['orderid'=>$id])->andWhere(['status'=>'AKTIF'])->andWhere(['hasil_test'=>'Lulus'])->count();
+
+		if($jmlorder == $jmldeliv){
+			$order = Order::findOne($id);
+			$order->status="COMPLETED";
+			$order->save();
+		}
+
 	}
 
 	public function actionPrintPengantar($id){
