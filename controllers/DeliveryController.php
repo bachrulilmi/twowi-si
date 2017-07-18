@@ -569,7 +569,7 @@ class DeliveryController extends \yii\web\Controller
 
 	public function actionListPembekalan2(){
 			
-		$query = Pembekalan::find();	
+		$query = Pembekalan::find()->where(['not',['date_bekal'=>null]]);	
 
 		$pagination = new Pagination([
 			'defaultPageSize' => 5,
