@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2017 at 05:02 AM
--- Server version: 10.1.9-MariaDB
+-- Generation Time: 19 Jul 2017 pada 01.38
+-- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -26,7 +26,7 @@ USE `twowinsistem`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `delivery`
+-- Struktur dari tabel `delivery`
 --
 
 DROP TABLE IF EXISTS `delivery`;
@@ -58,7 +58,7 @@ CREATE TABLE `delivery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `delivery`
+-- Dumping data untuk tabel `delivery`
 --
 
 INSERT INTO `delivery` (`id`, `orderid`, `kandidatid`, `status`, `flag_checklist`, `ktp`, `lamaran`, `ijazah`, `transkrip`, `kartukel`, `suratkuning`, `pengalamankerja`, `flag_pembekalan`, `pembekalan_id`, `date_bekal`, `time_bekal`, `nama_bekal`, `trainer_bekal`, `keterangan`, `flag_test`, `nilai_test`, `tgl_test`, `hasil_test`, `periode_kontrak`) VALUES
@@ -67,16 +67,19 @@ INSERT INTO `delivery` (`id`, `orderid`, `kandidatid`, `status`, `flag_checklist
 (3, '1', 'K1', 'AKTIF', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, '2', 'K1', 'NON AKTIF', 'COMPLETE', '', 'v-g0nrFKaUDesert.jpg', 'xwktBraVlnHydrangeas.jpg', '', 'fBDxRghFsqTulips.jpg', '', 'IpmSPU8FDMPenguins.jpg', 'Y', NULL, '2017-03-01', '23:56:00', 'asd', 'asda', 'asdad', 'Y', 85, '2017-02-19', 'Lulus', '2017-2019'),
 (6, '3', 'K4', 'NON AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, '3', 'K5', 'AKTIF', 'COMPLETE', 'LerUpRcW2bSmartSelectImage_2017-01-26-00-41-36.jpg', 'WQ6iL-4l8KPenguins.jpg', '', '', '', '', '', 'Y', NULL, '2017-02-02', '23:10:00', 'sopan santun bekerja', 'anwar', '', 'Y', 80, '2017-03-01', 'Lulus', '2 tahun'),
-(8, '3', 'K3', 'AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Y', '6j4JodnuOAkt2xwrXZdk', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, '2', 'K5', 'AKTIF', 'COMPLETE', '', '', '', '', '', '', '', 'Y', 'OTm1gIGYhz-EnI5BzYuI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, '3', 'K5', 'NON AKTIF', 'COMPLETE', 'LerUpRcW2bSmartSelectImage_2017-01-26-00-41-36.jpg', 'WQ6iL-4l8KPenguins.jpg', '', '', '', '', '', 'Y', NULL, '2017-02-02', '23:10:00', 'sopan santun bekerja', 'anwar', '', 'Y', 80, '2017-03-01', 'Lulus', '2 tahun'),
+(8, '3', 'K3', 'NON AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Y', '6j4JodnuOAkt2xwrXZdk', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, '2', 'K5', 'AKTIF', 'COMPLETE', '', '', '', '', '', '', '', 'Y', 'OTm1gIGYhz-EnI5BzYuI', NULL, NULL, NULL, NULL, NULL, 'Y', NULL, '2022-02-22', 'Lulus', ''),
 (10, '2', 'K6', 'AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Y', 'OTm1gIGYhz-EnI5BzYuI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, '2', 'K3', 'AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(11, '2', 'K3', 'AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, '5', 'K4', 'AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, 'Lulus', ''),
+(13, '5', 'K10', 'AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', NULL, NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, 'Lulus', ''),
+(14, '3', 'K7', 'AKTIF', 'IN PROGRESS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kandidat`
+-- Struktur dari tabel `kandidat`
 --
 
 DROP TABLE IF EXISTS `kandidat`;
@@ -126,7 +129,7 @@ CREATE TABLE `kandidat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kandidat`
+-- Dumping data untuk tabel `kandidat`
 --
 
 INSERT INTO `kandidat` (`id`, `kandidatid`, `namalengkap`, `jenkel`, `status`, `tempatlahir`, `tanggallahir`, `alamat`, `kodepos`, `notelp`, `agama`, `namasekolah`, `jurusan`, `namacomp1`, `jabatan1`, `lamabkrj1`, `namacomp2`, `jabatan2`, `lamabkrj2`, `namacomp3`, `jabatan3`, `lamabkrj3`, `nmbpk`, `nmibu`, `pkrjortu`, `nama_kerabat`, `telp_kerabat`, `msoffice`, `photosh`, `autoca`, `others`, `inggris`, `mengemudi`, `sim`, `fotokandidat`, `jabatan`, `refferer`, `date_add`, `flag_interview`, `flag_member`, `flag_aktif`, `reason_nonmember`) VALUES
@@ -137,12 +140,14 @@ INSERT INTO `kandidat` (`id`, `kandidatid`, `namalengkap`, `jenkel`, `status`, `
 (5, 'K5', 'Kandidat C', 'Perempuan', 'Pelajar', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Ya', '', 'RomKFOvVkCSmartSelectImage_2017-01-26-00-41-36.jpg', 'Security,Operator', 'Browser', '2017-03-04', 'Y', 'N', 'Y', NULL),
 (6, 'K6', 'Kandidat D', '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'vausf814raKoala.jpg', 'Security,Operator', '', '2017-03-14', 'Y', 'N', 'Y', NULL),
 (7, 'K7', 'Kandidat E', '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'oI_lmFJnwBPenguins.jpg', 'Cleaning Service', '', '2017-03-14', 'Y', 'N', 'Y', NULL),
-(8, 'K8', 'Kandidat F', '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'eDQ2j-0hY9Jellyfish.jpg', 'Cleaning Service', '', '2017-03-14', 'Y', 'N', 'Y', NULL);
+(8, 'K8', 'Kandidat F', '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'eDQ2j-0hY9Jellyfish.jpg', 'Cleaning Service', '', '2017-03-14', 'Y', 'N', 'Y', NULL),
+(9, 'K9', 'joko sosolo', '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Lpypl0dbjTSmartSelectImage_2017-01-26-00-41-36.jpg', 'Cleaning Service,Operator', 'Browser', '2017-03-22', 'Y', 'N', 'Y', NULL),
+(10, 'K10', 'Jontor', '', '', '', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'SI1792GJ7nSmartSelectImage_2017-01-26-00-42-07.jpg', 'Cleaning Service', '', '2017-03-22', 'Y', 'N', 'Y', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `konfigurasi`
+-- Struktur dari tabel `konfigurasi`
 --
 
 DROP TABLE IF EXISTS `konfigurasi`;
@@ -153,7 +158,7 @@ CREATE TABLE `konfigurasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `konfigurasi`
+-- Dumping data untuk tabel `konfigurasi`
 --
 
 INSERT INTO `konfigurasi` (`id`, `items`, `nilai`) VALUES
@@ -162,7 +167,7 @@ INSERT INTO `konfigurasi` (`id`, `items`, `nilai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kontrak`
+-- Struktur dari tabel `kontrak`
 --
 
 DROP TABLE IF EXISTS `kontrak`;
@@ -180,7 +185,7 @@ CREATE TABLE `kontrak` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kontrak`
+-- Dumping data untuk tabel `kontrak`
 --
 
 INSERT INTO `kontrak` (`id`, `mitraid`, `lampiran`, `penjelasan`, `tahun_mulai`, `tahun_selesai`, `status`, `periode`, `nokontrak`, `ttd`) VALUES
@@ -190,7 +195,7 @@ INSERT INTO `kontrak` (`id`, `mitraid`, `lampiran`, `penjelasan`, `tahun_mulai`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mitra`
+-- Struktur dari tabel `mitra`
 --
 
 DROP TABLE IF EXISTS `mitra`;
@@ -215,7 +220,7 @@ CREATE TABLE `mitra` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mitra`
+-- Dumping data untuk tabel `mitra`
 --
 
 INSERT INTO `mitra` (`id`, `mitraid`, `namamitra`, `alamatmitra`, `namapic`, `jabatanpic`, `telppic`, `emailpic`, `deskripsi`, `namapictwi`, `emailpictwi`, `status`, `lampiran`, `lampiran2`, `lampiran3`, `lampiran4`, `lampiran5`) VALUES
@@ -226,7 +231,7 @@ INSERT INTO `mitra` (`id`, `mitraid`, `namamitra`, `alamatmitra`, `namapic`, `ja
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mst_biaya`
+-- Struktur dari tabel `mst_biaya`
 --
 
 DROP TABLE IF EXISTS `mst_biaya`;
@@ -237,7 +242,7 @@ CREATE TABLE `mst_biaya` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mst_biaya`
+-- Dumping data untuk tabel `mst_biaya`
 --
 
 INSERT INTO `mst_biaya` (`id`, `jenis_bayar`, `biaya`) VALUES
@@ -250,7 +255,7 @@ INSERT INTO `mst_biaya` (`id`, `jenis_bayar`, `biaya`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mst_jabatan`
+-- Struktur dari tabel `mst_jabatan`
 --
 
 DROP TABLE IF EXISTS `mst_jabatan`;
@@ -261,7 +266,7 @@ CREATE TABLE `mst_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mst_jabatan`
+-- Dumping data untuk tabel `mst_jabatan`
 --
 
 INSERT INTO `mst_jabatan` (`id`, `nmjabatan`, `keterangan`) VALUES
@@ -272,7 +277,7 @@ INSERT INTO `mst_jabatan` (`id`, `nmjabatan`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Struktur dari tabel `order`
 --
 
 DROP TABLE IF EXISTS `order`;
@@ -297,18 +302,20 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `order`
+-- Dumping data untuk tabel `order`
 --
 
 INSERT INTO `order` (`id`, `mitraid`, `namapictwo`, `kategori`, `posisi`, `qty`, `spesifikasi`, `periode`, `sat_periode`, `tgl_mulai`, `tgl_selesai`, `nilai_kontrak`, `bpjs`, `gaji`, `thr`, `lampiran`, `status`) VALUES
 (1, 1, 'jono', 'Outsourcing', 'Operator', 200, 'bisa baca', '2 tahun', 'Bulan', '2017-02-01', '2017-03-01', '2000000', 'Tenaga Kerja,Hari Tua', 'UMP', 'Exclude', 'atAFO8yoonSmartSelectImage_2017-01-26-00-42-07.jpg', 'DISABLE'),
-(2, 2, 'komar', 'Outsourcing', 'Security', 100, 'bisa nulis', '10', 'Bulan', '2017-01-01', '2017-01-04', '34000000', 'Tenaga Kerja,Kematian,Hari Tua', 'UMP', 'Exclude', 'x-2cPBmi1kScreenHunter_204 Mar. 16 08.39.jpg', 'OPEN'),
-(3, 3, 'komar', 'Supply', 'Cleaning Service', 2, 'bisa baca', '2', 'Bulan', '2017-01-01', '2017-02-01', '80000000', 'Tenaga Kerja,Kematian', 'UMP', 'Exclude', '', 'OPEN');
+(2, 2, 'komar', 'Outsourcing', 'Security', 100, 'bisa nulis', '10', 'Bulan', '2017-01-01', '2017-01-04', '34000000', 'Tenaga Kerja,Kematian,Hari Tua', 'UMP', 'Exclude', 'x-2cPBmi1kScreenHunter_204 Mar. 16 08.39.jpg', 'COMPLETED'),
+(3, 3, 'komar', 'Supply', 'Cleaning Service', 2, 'bisa baca', '2', 'Bulan', '2017-01-01', '2017-02-01', '80000000', 'Tenaga Kerja,Kematian', 'UMP', 'Exclude', '1af8NgRJXvSmartSelectImage_2017-01-26-00-42-07.jpg', 'OPEN'),
+(4, 1, '', 'Outsourcing', 'Security', NULL, '', '', 'Bulan', NULL, NULL, '', 'Kecelakaan,Hari Tua', 'UMP', 'Include', '', 'OPEN'),
+(5, 2, 'fdgdfgdfg', 'Outsourcing', 'Security', 2, '', '', 'Bulan', NULL, NULL, '', 'Tenaga Kerja', 'UMP', 'Include', 'old-M_SIwHSmartSelectImage_2017-01-26-00-42-07.jpg', 'COMPLETED');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembayaran`
+-- Struktur dari tabel `pembayaran`
 --
 
 DROP TABLE IF EXISTS `pembayaran`;
@@ -323,7 +330,7 @@ CREATE TABLE `pembayaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pembayaran`
+-- Dumping data untuk tabel `pembayaran`
 --
 
 INSERT INTO `pembayaran` (`id`, `kandidatid`, `tglbayar`, `nominal`, `picbayar`, `jenisbayar`, `viabayar`) VALUES
@@ -332,7 +339,7 @@ INSERT INTO `pembayaran` (`id`, `kandidatid`, `tglbayar`, `nominal`, `picbayar`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembekalan`
+-- Struktur dari tabel `pembekalan`
 --
 
 DROP TABLE IF EXISTS `pembekalan`;
@@ -347,7 +354,7 @@ CREATE TABLE `pembekalan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pembekalan`
+-- Dumping data untuk tabel `pembekalan`
 --
 
 INSERT INTO `pembekalan` (`id`, `delivery_id`, `date_bekal`, `time_bekal`, `nama_bekal`, `trainer_bekal`, `keterangan`) VALUES
@@ -365,7 +372,7 @@ INSERT INTO `pembekalan` (`id`, `delivery_id`, `date_bekal`, `time_bekal`, `nama
 -- --------------------------------------------------------
 
 --
--- Table structure for table `report_test`
+-- Struktur dari tabel `report_test`
 --
 
 DROP TABLE IF EXISTS `report_test`;
@@ -381,7 +388,7 @@ CREATE TABLE `report_test` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tran_jabatan`
+-- Struktur dari tabel `tran_jabatan`
 --
 
 DROP TABLE IF EXISTS `tran_jabatan`;
@@ -393,7 +400,7 @@ CREATE TABLE `tran_jabatan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -406,7 +413,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `auth_key`, `password_reset_token`) VALUES
@@ -496,12 +503,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `delivery`
 --
 ALTER TABLE `delivery`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `kandidat`
 --
 ALTER TABLE `kandidat`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `konfigurasi`
 --
@@ -531,7 +538,7 @@ ALTER TABLE `mst_jabatan`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
