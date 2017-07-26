@@ -109,6 +109,13 @@ AppAsset::register($this);
 				$ord_a ='';
 				$ord_b='';
 
+				$delivery = 'class="select"';
+				$dev_sub = '';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='';
+
 			}elseif ($this->title == 'List Interview Kandidat Baru'  || $this->title == 'Interview Kandidat') {
 
 
@@ -129,6 +136,13 @@ AppAsset::register($this);
 				$ord_a ='';
 				$ord_b='';
 
+				$delivery = 'class="select"';
+				$dev_sub = '';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='';
+
 
 			}elseif ($this->title == 'Pembayaran Kandidat Baru' || $this->title == 'Pembayaran Kandidat') {
 				$kandidat = 'class="current"';
@@ -147,6 +161,14 @@ AppAsset::register($this);
 				$ord_sub = '';
 				$ord_a ='';
 				$ord_b='';
+
+				$delivery = 'class="select"';
+				$dev_sub = '';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='';
+
 			}elseif ($this->title == 'Database Kandidat') {
 				$kandidat = 'class="current"';
 				$kan_sub = 'show';
@@ -164,6 +186,14 @@ AppAsset::register($this);
 				$ord_sub = '';
 				$ord_a ='';
 				$ord_b='';
+
+				$delivery = 'class="select"';
+				$dev_sub = '';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='';
+
 			}elseif ($this->title == 'List Mitra' || $this->title =='Kontrak Baru' || $this->title =='Ubah Kontrak' || $this->title =='List Kontrak' || $this->title =='Edit Mitra') {
 	
 				$kandidat = 'class="select"';
@@ -182,6 +212,13 @@ AppAsset::register($this);
 				$ord_sub = '';
 				$ord_a ='';
 				$ord_b='';
+
+				$delivery = 'class="select"';
+				$dev_sub = '';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='';
 
 			}elseif ($this->title == 'Tambah Mitra Baru') {
 	
@@ -202,6 +239,13 @@ AppAsset::register($this);
 				$ord_a ='';
 				$ord_b='';
 
+				$delivery = 'class="select"';
+				$dev_sub = '';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='';
+
 			}elseif ($this->title == 'List Order') {
 	
 				$kandidat = 'class="select"';
@@ -220,6 +264,13 @@ AppAsset::register($this);
 				$ord_sub = 'show';
 				$ord_a ='class="sub_show"';
 				$ord_b='';
+
+				$delivery = 'class="select"';
+				$dev_sub = '';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='';
 
 			}elseif ($this->title == 'Order Baru') {
 	
@@ -240,6 +291,118 @@ AppAsset::register($this);
 				$ord_a ='';
 				$ord_b='class="sub_show"';
 
+				$delivery = 'class="select"';
+				$dev_sub = '';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='';
+
+			}elseif ($this->title == 'Preparing Delivery') {
+	
+				$kandidat = 'class="select"';
+				$kan_sub = '';
+				$kan_a = '';
+				$kan_b = '';
+				$kan_c = '';
+				$kan_d = '';
+
+				$mitra = 'class="select"';
+				$mit_sub = '';
+				$mit_a ='';
+				$mit_b='';
+
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
+
+				$delivery = 'class="current"';
+				$dev_sub = 'show';
+				$dev_a ='class="sub_show"';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='';
+
+			}
+			elseif ($this->title == 'Checklist Delivery') {
+	
+				$kandidat = 'class="select"';
+				$kan_sub = '';
+				$kan_a = '';
+				$kan_b = '';
+				$kan_c = '';
+				$kan_d = '';
+
+				$mitra = 'class="select"';
+				$mit_sub = '';
+				$mit_a ='';
+				$mit_b='';
+
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
+
+				$delivery = 'class="current"';
+				$dev_sub = 'show';
+				$dev_a ='';
+				$dev_b='class="sub_show"';
+				$dev_c='';
+				$dev_d='';
+
+			}elseif ($this->title == 'Pembekalan Delivery' || $this->title =='Form Pembekalan' || $this->title =='List Kandidat Pembekalan' || $this->title =='Pilih Kandidat Pembekalan') {
+	
+				$kandidat = 'class="select"';
+				$kan_sub = '';
+				$kan_a = '';
+				$kan_b = '';
+				$kan_c = '';
+				$kan_d = '';
+
+				$mitra = 'class="select"';
+				$mit_sub = '';
+				$mit_a ='';
+				$mit_b='';
+
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
+
+				$delivery = 'class="current"';
+				$dev_sub = 'show';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='class="sub_show"';
+				$dev_d='';
+
+			}elseif ($this->title == 'Testing Delivery' || $this->title =='List Kandidat Testing' || $this->title =='Form Input Nilai' ) {
+	
+				$kandidat = 'class="select"';
+				$kan_sub = '';
+				$kan_a = '';
+				$kan_b = '';
+				$kan_c = '';
+				$kan_d = '';
+
+				$mitra = 'class="select"';
+				$mit_sub = '';
+				$mit_a ='';
+				$mit_b='';
+
+				$order = 'class="select"';
+				$ord_sub = '';
+				$ord_a ='';
+				$ord_b='';
+
+				$delivery = 'class="current"';
+				$dev_sub = 'show';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='class="sub_show"';
+
 			}
 			else{
 				$kandidat = 'class="select"';
@@ -258,6 +421,13 @@ AppAsset::register($this);
 				$ord_sub = '';
 				$ord_a ='';
 				$ord_b='';
+
+				$delivery = 'class="select"';
+				$dev_sub = '';
+				$dev_a ='';
+				$dev_b='';
+				$dev_c='';
+				$dev_d='';
 			}
 			?>
 
@@ -310,14 +480,14 @@ AppAsset::register($this);
 		
 		<div class="nav-divider">&nbsp;</div>
 		
-		<ul class="select"><li><a href="#nogo"><b>Delivery</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<ul <?= $delivery ?>><li><a href="#nogo"><b>Delivery</b><!--[if IE 7]><!--></a><!--<![endif]-->
 			<!--[if lte IE 6]><table><tr><td><![endif]-->
-			<div class="select_sub">
+			<div class="select_sub <?=$dev_sub ?>">
 				<ul class="sub">
-					<li><a href="<?= Url::to(['delivery/list-deliv']); ?>">Preparing</a></li>
-					<li><a href="<?= Url::to(['delivery/list-checklist']); ?>">Checklist</a></li>
-					<li><a href="<?= Url::to(['delivery/list-pembekalan']); ?>">Pembekalan</a></li>
-					<li><a href="<?= Url::to(['delivery/list-testing']); ?>">Testing</a></li>
+					<li <?= $dev_a ?>><a href="<?= Url::to(['delivery/list-deliv']); ?>">Preparing</a></li>
+					<li <?= $dev_b ?>><a href="<?= Url::to(['delivery/list-checklist']); ?>">Checklist</a></li>
+					<li <?= $dev_c ?>><a href="<?= Url::to(['delivery/list-pembekalan']); ?>">Pembekalan</a></li>
+					<li <?= $dev_d ?>><a href="<?= Url::to(['delivery/list-testing']); ?>">Testing</a></li>
 
 				</ul>
 			</div>
