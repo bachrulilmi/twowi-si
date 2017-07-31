@@ -57,7 +57,7 @@ $this->title = 'Ubah Kontrak';
 						'Aktif' => 'Aktif', 
 						'Non Aktif' => 'Non Aktif'
 						])->label('Status');?>
-						<?= $form->field($kontrak, 'periode')->label('Periode Kontrak')?>
+						<?= $form->field($kontrak, 'nilai')->label('Nilai Kontrak')?>
 						
 						<div class="form-group field-kontrak-lampiran">
 							<label class="col-lg-2 control-label" for="kontrak-lampiran">Lampiran Kontrak</label>

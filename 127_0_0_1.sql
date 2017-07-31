@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 Jul 2017 pada 01.38
--- Versi Server: 10.1.9-MariaDB
+-- Generation Time: Jul 31, 2017 at 12:00 PM
+-- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -26,7 +26,7 @@ USE `twowinsistem`;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `delivery`
+-- Table structure for table `delivery`
 --
 
 DROP TABLE IF EXISTS `delivery`;
@@ -58,7 +58,7 @@ CREATE TABLE `delivery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `delivery`
+-- Dumping data for table `delivery`
 --
 
 INSERT INTO `delivery` (`id`, `orderid`, `kandidatid`, `status`, `flag_checklist`, `ktp`, `lamaran`, `ijazah`, `transkrip`, `kartukel`, `suratkuning`, `pengalamankerja`, `flag_pembekalan`, `pembekalan_id`, `date_bekal`, `time_bekal`, `nama_bekal`, `trainer_bekal`, `keterangan`, `flag_test`, `nilai_test`, `tgl_test`, `hasil_test`, `periode_kontrak`) VALUES
@@ -79,7 +79,7 @@ INSERT INTO `delivery` (`id`, `orderid`, `kandidatid`, `status`, `flag_checklist
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kandidat`
+-- Table structure for table `kandidat`
 --
 
 DROP TABLE IF EXISTS `kandidat`;
@@ -129,7 +129,7 @@ CREATE TABLE `kandidat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kandidat`
+-- Dumping data for table `kandidat`
 --
 
 INSERT INTO `kandidat` (`id`, `kandidatid`, `namalengkap`, `jenkel`, `status`, `tempatlahir`, `tanggallahir`, `alamat`, `kodepos`, `notelp`, `agama`, `namasekolah`, `jurusan`, `namacomp1`, `jabatan1`, `lamabkrj1`, `namacomp2`, `jabatan2`, `lamabkrj2`, `namacomp3`, `jabatan3`, `lamabkrj3`, `nmbpk`, `nmibu`, `pkrjortu`, `nama_kerabat`, `telp_kerabat`, `msoffice`, `photosh`, `autoca`, `others`, `inggris`, `mengemudi`, `sim`, `fotokandidat`, `jabatan`, `refferer`, `date_add`, `flag_interview`, `flag_member`, `flag_aktif`, `reason_nonmember`) VALUES
@@ -147,7 +147,7 @@ INSERT INTO `kandidat` (`id`, `kandidatid`, `namalengkap`, `jenkel`, `status`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `konfigurasi`
+-- Table structure for table `konfigurasi`
 --
 
 DROP TABLE IF EXISTS `konfigurasi`;
@@ -158,7 +158,7 @@ CREATE TABLE `konfigurasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `konfigurasi`
+-- Dumping data for table `konfigurasi`
 --
 
 INSERT INTO `konfigurasi` (`id`, `items`, `nilai`) VALUES
@@ -167,7 +167,7 @@ INSERT INTO `konfigurasi` (`id`, `items`, `nilai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kontrak`
+-- Table structure for table `kontrak`
 --
 
 DROP TABLE IF EXISTS `kontrak`;
@@ -179,23 +179,23 @@ CREATE TABLE `kontrak` (
   `tahun_mulai` varchar(20) DEFAULT NULL,
   `tahun_selesai` varchar(20) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
-  `periode` varchar(20) DEFAULT NULL,
+  `nilai` int(20) DEFAULT NULL,
   `nokontrak` varchar(50) DEFAULT NULL,
   `ttd` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kontrak`
+-- Dumping data for table `kontrak`
 --
 
-INSERT INTO `kontrak` (`id`, `mitraid`, `lampiran`, `penjelasan`, `tahun_mulai`, `tahun_selesai`, `status`, `periode`, `nokontrak`, `ttd`) VALUES
-(1, 2, 'o1RWTkv18-Lighthouse.jpg', '', '2010', '2015', 'Aktif', '', '8908908', ''),
-(2, 2, '', '', '2011', '2017', 'Aktif', '', '34324234', 'ewrwre');
+INSERT INTO `kontrak` (`id`, `mitraid`, `lampiran`, `penjelasan`, `tahun_mulai`, `tahun_selesai`, `status`, `nilai`, `nokontrak`, `ttd`) VALUES
+(1, 2, 'o1RWTkv18-Lighthouse.jpg', '', '2010', '2015', 'Aktif', 0, '8908908', ''),
+(2, 2, '', '', '2011', '2017', 'Aktif', 2344, '34324234', 'ewrwre');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mitra`
+-- Table structure for table `mitra`
 --
 
 DROP TABLE IF EXISTS `mitra`;
@@ -220,7 +220,7 @@ CREATE TABLE `mitra` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mitra`
+-- Dumping data for table `mitra`
 --
 
 INSERT INTO `mitra` (`id`, `mitraid`, `namamitra`, `alamatmitra`, `namapic`, `jabatanpic`, `telppic`, `emailpic`, `deskripsi`, `namapictwi`, `emailpictwi`, `status`, `lampiran`, `lampiran2`, `lampiran3`, `lampiran4`, `lampiran5`) VALUES
@@ -231,7 +231,7 @@ INSERT INTO `mitra` (`id`, `mitraid`, `namamitra`, `alamatmitra`, `namapic`, `ja
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mst_biaya`
+-- Table structure for table `mst_biaya`
 --
 
 DROP TABLE IF EXISTS `mst_biaya`;
@@ -242,7 +242,7 @@ CREATE TABLE `mst_biaya` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mst_biaya`
+-- Dumping data for table `mst_biaya`
 --
 
 INSERT INTO `mst_biaya` (`id`, `jenis_bayar`, `biaya`) VALUES
@@ -255,7 +255,7 @@ INSERT INTO `mst_biaya` (`id`, `jenis_bayar`, `biaya`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mst_jabatan`
+-- Table structure for table `mst_jabatan`
 --
 
 DROP TABLE IF EXISTS `mst_jabatan`;
@@ -266,7 +266,7 @@ CREATE TABLE `mst_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mst_jabatan`
+-- Dumping data for table `mst_jabatan`
 --
 
 INSERT INTO `mst_jabatan` (`id`, `nmjabatan`, `keterangan`) VALUES
@@ -277,7 +277,7 @@ INSERT INTO `mst_jabatan` (`id`, `nmjabatan`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `order`
+-- Table structure for table `order`
 --
 
 DROP TABLE IF EXISTS `order`;
@@ -302,7 +302,7 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `order`
+-- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`id`, `mitraid`, `namapictwo`, `kategori`, `posisi`, `qty`, `spesifikasi`, `periode`, `sat_periode`, `tgl_mulai`, `tgl_selesai`, `nilai_kontrak`, `bpjs`, `gaji`, `thr`, `lampiran`, `status`) VALUES
@@ -315,7 +315,7 @@ INSERT INTO `order` (`id`, `mitraid`, `namapictwo`, `kategori`, `posisi`, `qty`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembayaran`
+-- Table structure for table `pembayaran`
 --
 
 DROP TABLE IF EXISTS `pembayaran`;
@@ -330,7 +330,7 @@ CREATE TABLE `pembayaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pembayaran`
+-- Dumping data for table `pembayaran`
 --
 
 INSERT INTO `pembayaran` (`id`, `kandidatid`, `tglbayar`, `nominal`, `picbayar`, `jenisbayar`, `viabayar`) VALUES
@@ -339,7 +339,7 @@ INSERT INTO `pembayaran` (`id`, `kandidatid`, `tglbayar`, `nominal`, `picbayar`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembekalan`
+-- Table structure for table `pembekalan`
 --
 
 DROP TABLE IF EXISTS `pembekalan`;
@@ -354,7 +354,7 @@ CREATE TABLE `pembekalan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pembekalan`
+-- Dumping data for table `pembekalan`
 --
 
 INSERT INTO `pembekalan` (`id`, `delivery_id`, `date_bekal`, `time_bekal`, `nama_bekal`, `trainer_bekal`, `keterangan`) VALUES
@@ -372,7 +372,7 @@ INSERT INTO `pembekalan` (`id`, `delivery_id`, `date_bekal`, `time_bekal`, `nama
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `report_test`
+-- Table structure for table `report_test`
 --
 
 DROP TABLE IF EXISTS `report_test`;
@@ -388,7 +388,7 @@ CREATE TABLE `report_test` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tran_jabatan`
+-- Table structure for table `tran_jabatan`
 --
 
 DROP TABLE IF EXISTS `tran_jabatan`;
@@ -400,7 +400,7 @@ CREATE TABLE `tran_jabatan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -413,7 +413,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `auth_key`, `password_reset_token`) VALUES

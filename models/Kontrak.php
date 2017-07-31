@@ -14,7 +14,7 @@ use Yii;
  * @property string $tahun_mulai
  * @property string $tahun_selesai
  * @property string $status
- * @property string $periode
+ * @property integer $nilai
  * @property string $nokontrak
  * @property string $ttd
  */
@@ -35,9 +35,9 @@ class Kontrak extends \yii\db\ActiveRecord
     {
         return [
             [['mitraid'], 'required'],
-            [['mitraid'], 'integer'],
+            [['mitraid', 'nilai'], 'integer'],
             [['lampiran', 'penjelasan'], 'string', 'max' => 100],
-            [['tahun_mulai', 'tahun_selesai', 'status', 'periode'], 'string', 'max' => 20],
+            [['tahun_mulai', 'tahun_selesai', 'status'], 'string', 'max' => 20],
             [['nokontrak', 'ttd'], 'string', 'max' => 50],
         ];
     }
@@ -55,7 +55,7 @@ class Kontrak extends \yii\db\ActiveRecord
             'tahun_mulai' => 'Tahun Mulai',
             'tahun_selesai' => 'Tahun Selesai',
             'status' => 'Status',
-            'periode' => 'Periode',
+            'nilai' => 'Nilai',
             'nokontrak' => 'Nokontrak',
             'ttd' => 'Ttd',
         ];

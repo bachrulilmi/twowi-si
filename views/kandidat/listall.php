@@ -39,6 +39,9 @@ $this->title = 'Database Kandidat';
 								<select class="form-control input-sm" name="kolom">
 									<option value="kandidatid">No Kandidat</option>
 									<option value="namalengkap">Nama Kandidat</option>
+									<option value="jurusan">Jurusan</option>
+									<option value="jabatan">Posisi</option>
+									
 
 								</select>
 
@@ -60,6 +63,7 @@ $this->title = 'Database Kandidat';
 					<th class="table-header-repeat line-left"><p>Jenis Kelamin</p></th>
 					<th class="table-header-repeat line-left"><p>Status</p></th>
 					<th class="table-header-repeat line-left"><p>Jurusan</p></th>
+					<th class="table-header-repeat line-left"><p>Posisi</p></th>
 					<th class="table-header-options line-left"><p>Actions</p></th>
 				</tr>
 				
@@ -78,6 +82,7 @@ $this->title = 'Database Kandidat';
 					<td><?= $kan->jenkel ?></td>
 					<td><?= $member ?></td>
 					<td><?= $kan->jurusan ?></td>
+					<td><?= $kan->jabatan ?></td>
 					<td class="options-width">
 					<a href="index.php?r=kandidat/disable&id=<?= $kan->id ?>" title="Disable" class="icon-disable info-tooltip"></a>
 					<a href="index.php?r=kandidat/pdf&id=<?= $kan->id ?>" target="_blank" title="Generate CV" class="icon-cetak-cv info-tooltip"></a>

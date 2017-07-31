@@ -62,7 +62,7 @@ $this->title = 'List Kontrak';
 
 								<th class="table-header-repeat line-left minwidth-1"><p>Tahun Mulai Kontrak</p>	</th>
 								<th class="table-header-repeat line-left minwidth-1"><p>Penjelasan</p></th>
-								<th class="table-header-repeat line-left minwidth-1"><p>Periode</p></th>
+								<th class="table-header-repeat line-left minwidth-1"><p>Nilai Kontrak</p></th>
 
 								<th class="table-header-options line-left"><p>Actions</p></th>
 							</tr>
@@ -71,7 +71,7 @@ $this->title = 'List Kontrak';
 
 								<td><?= $mit->tahun_mulai ?></td>
 								<td><?= $mit->penjelasan ?></td>
-								<td><?= $mit->periode ?></td>
+								<td><?= $mit->nilai ?></td>
 								<td class="options-width">
 
 									<a href="<?= Url::to(['mitra/disable-kontrak', 'id' =>$mit->id ]) ?>" title="Non Aktif" class="icon-disable info-tooltip"></a>

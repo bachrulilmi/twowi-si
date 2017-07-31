@@ -57,7 +57,7 @@ $this->title = 'Kontrak Baru';
 			'Aktif' => 'Aktif', 
 			'Non Aktif' => 'Non Aktif'
 			])->label('Status');?>
-		<?= $form->field($model2, 'periode')->label('Periode Kontrak')?>
+		<?= $form->field($model2, 'nilai')->label('Nilai Kontrak')?>
 		<?= $form->field($model2, 'lampiran')->fileInput()->label('Lampiran Kontrak') ?>
 
         <div class="form-group">

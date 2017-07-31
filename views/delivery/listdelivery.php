@@ -43,6 +43,8 @@ $this->title = 'Preparing Delivery';
 									
 									<option value="id">No Order</option>
 
+									<option value="id">Jurusan</option>
+
 								</select>
 
 							</div>
