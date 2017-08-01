@@ -58,8 +58,9 @@ $this->title = 'Form Input Nilai';
 					<?= $form->field($model, 'nilai_test')->label('Nilai Test') ?>
 
 					<?= $form->field($model, 'hasil_test')->dropdownList([
-						'Lulus' => 'Lulus', 
-						'Tidak Lulus' => 'Tidak Lulus'
+						'Diterima' => 'Diterima', 
+						'Tidak Diterima' => 'Tidak Diterima',
+						'Waiting List' => 'Waiting List'
 
 						],
 						['prompt'=>'Pilih',
@@ -74,6 +75,8 @@ $this->title = 'Form Input Nilai';
 						
 						']
 						)->label('Hasil Test');?>
+
+						<?= $form->field($model, 'keterangan_test')->textarea(['rows' => '6'])->label('Keterangan')?>
 
 						<?= $form->field($model, 'periode_kontrak')->textInput(['id'=>'periode','readonly' => true])->label('Periode Kontrak') ?>
 

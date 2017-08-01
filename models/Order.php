@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "Order".
+ * This is the model class for table "order".
  *
  * @property integer $id
  * @property integer $mitraid
@@ -14,6 +14,7 @@ use Yii;
  * @property string $posisi
  * @property integer $qty
  * @property string $spesifikasi
+ * @property string $duedate
  * @property string $periode
  * @property string $sat_periode
  * @property string $tgl_mulai
@@ -23,6 +24,7 @@ use Yii;
  * @property string $gaji
  * @property string $thr
  * @property string $lampiran
+ * @property string $status
  */
 class Order extends \yii\db\ActiveRecord
 {
@@ -31,7 +33,7 @@ class Order extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Order';
+        return 'order';
     }
 
     /**
@@ -40,12 +42,12 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            
+            [['mitraid', 'duedate'], 'required'],
             [['mitraid', 'qty'], 'integer'],
-            [['tgl_mulai', 'tgl_selesai'], 'safe'],
+            [['duedate', 'tgl_mulai', 'tgl_selesai'], 'safe'],
             [['namapictwo'], 'string', 'max' => 50],
-            [['kategori', 'posisi', 'periode', 'sat_periode', 'nilai_kontrak', 'gaji', 'thr','status'], 'string', 'max' => 20],
-            [['spesifikasi','lampiran','bpjs'], 'string', 'max' => 100],
+            [['kategori', 'posisi', 'periode', 'sat_periode', 'nilai_kontrak', 'gaji', 'thr', 'status'], 'string', 'max' => 20],
+            [['spesifikasi', 'bpjs', 'lampiran'], 'string', 'max' => 100],
         ];
     }
 
@@ -62,6 +64,7 @@ class Order extends \yii\db\ActiveRecord
             'posisi' => 'Posisi',
             'qty' => 'Qty',
             'spesifikasi' => 'Spesifikasi',
+            'duedate' => 'Duedate',
             'periode' => 'Periode',
             'sat_periode' => 'Sat Periode',
             'tgl_mulai' => 'Tgl Mulai',
@@ -75,12 +78,14 @@ class Order extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getMitra()
-    {
-        return $this->hasOne(Mitra::className(), ['id' => 'mitraid']);
-    }
 
-    public function getDelivery(){
-        return $this->hasMany(Delivery::className(), ['orderid' => 'id']);
-    }
+       public function getMitra() 
+           { 
+               return $this->hasOne(Mitra::className(), ['id' => 'mitraid']); 
+           } 
+         
+           public function getDelivery(){ 
+               return $this->hasMany(Delivery::className(), ['orderid' => 'id']); 
+           } 
+        
 }

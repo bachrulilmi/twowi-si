@@ -93,7 +93,7 @@ class DeliveryController extends \yii\web\Controller
 		$request = Yii::$app->request;
 		$sub = Delivery::find()->select('kandidatid')->where(['status'=>'AKTIF']);
 		$query = Kandidat::find()
-		->where(['not in','kandidatid',$sub])
+		//->where(['not in','kandidatid',$sub])
 		->andWhere(['flag_aktif' => 'Y'])
 		->andWhere(['flag_interview' => 'Y'])
 		->andWhere(['like', $request->post('kolom', 'kandidatid'), $request->post('nilai', '')]);
@@ -212,6 +212,8 @@ class DeliveryController extends \yii\web\Controller
 			$filekartukel = UploadedFile::getInstance($model, 'kartukel');
 			$filesuratkuning = UploadedFile::getInstance($model, 'suratkuning');
 			$filepengalamankerja = UploadedFile::getInstance($model, 'pengalamankerja'); 
+			$fileskck = UploadedFile::getInstance($model, 'skck'); 
+			$filekwitmember = UploadedFile::getInstance($model, 'kwit_member'); 
 
 			if(!empty($filektp)){
 				$newname = Yii::$app->getSecurity()->generateRandomString(10).$filektp->baseName.'.'.$filektp->extension;
@@ -241,6 +243,14 @@ class DeliveryController extends \yii\web\Controller
 				$newname = Yii::$app->getSecurity()->generateRandomString(10).$filepengalamankerja->baseName.'.'.$filepengalamankerja->extension;
 				$model->pengalamankerja = $newname;
 				$filepengalamankerja->saveAs('checklist/' . $newname);
+			}if (!empty($fileskck)) {
+				$newname = Yii::$app->getSecurity()->generateRandomString(10).$fileskck->baseName.'.'.$fileskck->extension;
+				$model->skck = $newname;
+				$fileskck->saveAs('checklist/' . $newname);
+			}if (!empty($filekwitmember)) {
+				$newname = Yii::$app->getSecurity()->generateRandomString(10).$filekwitmember->baseName.'.'.$filekwitmember->extension;
+				$model->kwit_member = $newname;
+				$filekwitmember->saveAs('checklist/' . $newname);
 			}
 
 			if($model->save() ){

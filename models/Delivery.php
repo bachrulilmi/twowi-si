@@ -19,6 +19,8 @@ use Yii;
  * @property string $kartukel
  * @property string $suratkuning
  * @property string $pengalamankerja
+ * @property string $skck
+ * @property string $kwit_member
  * @property string $flag_pembekalan
  * @property string $pembekalan_id
  * @property string $date_bekal
@@ -30,6 +32,7 @@ use Yii;
  * @property integer $nilai_test
  * @property string $tgl_test
  * @property string $hasil_test
+ * @property string $keterangan_test
  * @property string $periode_kontrak
  */
 class Delivery extends \yii\db\ActiveRecord
@@ -48,11 +51,13 @@ class Delivery extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-        [['date_bekal', 'time_bekal', 'tgl_test'], 'safe'],
-        [['nilai_test'], 'integer'],
-        [['orderid', 'kandidatid', 'status', 'flag_checklist', 'flag_pembekalan', 'pembekalan_id', 'flag_test', 'hasil_test', 'periode_kontrak'], 'string', 'max' => 20],
-        [['ktp', 'lamaran', 'ijazah', 'transkrip', 'kartukel', 'suratkuning', 'pengalamankerja', 'nama_bekal', 'trainer_bekal'], 'string', 'max' => 100],
-        [['keterangan'], 'string', 'max' => 200],
+            
+            [['date_bekal', 'time_bekal', 'tgl_test'], 'safe'],
+            [['nilai_test'], 'integer'],
+            [['keterangan_test'], 'string'],
+            [['orderid', 'kandidatid', 'status', 'flag_checklist', 'flag_pembekalan', 'pembekalan_id', 'flag_test', 'hasil_test', 'periode_kontrak'], 'string', 'max' => 20],
+            [['ktp', 'lamaran', 'ijazah', 'transkrip', 'kartukel', 'suratkuning', 'pengalamankerja', 'skck', 'kwit_member', 'nama_bekal', 'trainer_bekal'], 'string', 'max' => 100],
+            [['keterangan'], 'string', 'max' => 200],
         ];
     }
 
@@ -62,40 +67,42 @@ class Delivery extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-        'id' => 'ID',
-        'orderid' => 'Orderid',
-        'kandidatid' => 'Kandidatid',
-        'status' => 'Status',
-        'flag_checklist' => 'Flag Checklist',
-        'ktp' => 'Ktp',
-        'lamaran' => 'Lamaran',
-        'ijazah' => 'Ijazah',
-        'transkrip' => 'Transkrip',
-        'kartukel' => 'Kartukel',
-        'suratkuning' => 'Suratkuning',
-        'pengalamankerja' => 'Pengalamankerja',
-        'flag_pembekalan' => 'Flag Pembekalan',
-        'pembekalan_id' => 'Pembekalan ID',
-        'date_bekal' => 'Date Bekal',
-        'time_bekal' => 'Time Bekal',
-        'nama_bekal' => 'Nama Bekal',
-        'trainer_bekal' => 'Trainer Bekal',
-        'keterangan' => 'Keterangan',
-        'flag_test' => 'Flag Test',
-        'nilai_test' => 'Nilai Test',
-        'tgl_test' => 'Tgl Test',
-        'hasil_test' => 'Hasil Test',
-        'periode_kontrak' => 'Periode Kontrak',
+            'id' => 'ID',
+            'orderid' => 'Orderid',
+            'kandidatid' => 'Kandidatid',
+            'status' => 'Status',
+            'flag_checklist' => 'Flag Checklist',
+            'ktp' => 'Ktp',
+            'lamaran' => 'Lamaran',
+            'ijazah' => 'Ijazah',
+            'transkrip' => 'Transkrip',
+            'kartukel' => 'Kartukel',
+            'suratkuning' => 'Suratkuning',
+            'pengalamankerja' => 'Pengalamankerja',
+            'skck' => 'Skck',
+            'kwit_member' => 'Kwit Member',
+            'flag_pembekalan' => 'Flag Pembekalan',
+            'pembekalan_id' => 'Pembekalan ID',
+            'date_bekal' => 'Date Bekal',
+            'time_bekal' => 'Time Bekal',
+            'nama_bekal' => 'Nama Bekal',
+            'trainer_bekal' => 'Trainer Bekal',
+            'keterangan' => 'Keterangan',
+            'flag_test' => 'Flag Test',
+            'nilai_test' => 'Nilai Test',
+            'tgl_test' => 'Tgl Test',
+            'hasil_test' => 'Hasil Test',
+            'keterangan_test' => 'Keterangan Test',
+            'periode_kontrak' => 'Periode Kontrak',
         ];
     }
 
     public function getKandidat(){  
-      return $this->hasOne(Kandidat::className(), ['kandidatid' => 'kandidatid']);  
-  }  
-
-    public function getOrder(){
-        return $this->hasOne(Order::className(), ['id' => 'orderid']);
-
-  } 
-       
+                                  return $this->hasOne(Kandidat::className(), ['kandidatid' => 'kandidatid']);  
+                              }  
+                                 
+                                public function getOrder(){  
+                                    return $this->hasOne(Order::className(), ['id' => 'orderid']);  
+                                 
+                              }  
 }

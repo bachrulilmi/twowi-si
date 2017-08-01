@@ -63,7 +63,9 @@ $this->title = 'Order Baru';
 			])->label('Posisi Order');?>
 		<?= $form->field($model, 'qty')->label('Quantity')?>
 		<?= $form->field($model, 'spesifikasi')->textarea(['rows' => '6'])->label('Spesifikasi')?>
-		<?= $form->field($model, 'periode')->label('Periode Kontrak')?>
+		<?= $form->field($model, 'duedate')->label('Duedate Order')->widget(\yii\widgets\MaskedInput::className(), ['clientOptions' => ['alias' =>  'yyyy-mm-dd']])?>
+
+		<!--?= $form->field($model, 'periode')->label('Periode Kontrak')?>
 		<?= $form->field($model, 'sat_periode')->dropdownList([
 				'Bulan' => 'Bulan', 
 				'Tahun' => 'Tahun',
@@ -71,7 +73,7 @@ $this->title = 'Order Baru';
 			])->label('Satuan Periode');?>
 		<?= $form->field($model, 'tgl_mulai')->widget(\yii\widgets\MaskedInput::className(), ['clientOptions' => ['alias' =>  'yyyy-mm-dd']])->label('Tanggal Mulai Kontrak')?>
 		<?= $form->field($model, 'tgl_selesai')->widget(\yii\widgets\MaskedInput::className(), ['clientOptions' => ['alias' =>  'yyyy-mm-dd']])->label('Tanggal Selesai Kontrak')?>
-		<?= $form->field($model, 'nilai_kontrak')->label('Nilai Kontrak')?>
+		<?= $form->field($model, 'nilai_kontrak')->label('Nilai Kontrak')?> -->
 		<?= $form->field($model, 'bpjs')->checkboxList([
 				'Tenaga Kerja' => 'Security', 
 				'Kematian' => 'Kematian',

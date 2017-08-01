@@ -11,6 +11,7 @@ use Yii;
  * @property string $mitraid
  * @property string $namamitra
  * @property string $alamatmitra
+ * @property string $tgl_gajian
  * @property string $namapic
  * @property string $jabatanpic
  * @property string $telppic
@@ -41,7 +42,8 @@ class Mitra extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            //[['mitraid', 'jabatanpic'], 'required'],
+            
+            [['tgl_gajian'], 'safe'],
             [['mitraid', 'status'], 'string', 'max' => 10],
             [['namamitra', 'emailpic', 'namapictwi', 'emailpictwi'], 'string', 'max' => 50],
             [['alamatmitra', 'deskripsi', 'lampiran', 'lampiran2', 'lampiran3', 'lampiran4', 'lampiran5'], 'string', 'max' => 255],
@@ -61,6 +63,7 @@ class Mitra extends \yii\db\ActiveRecord
             'mitraid' => 'Mitraid',
             'namamitra' => 'Namamitra',
             'alamatmitra' => 'Alamatmitra',
+            'tgl_gajian' => 'Tgl Gajian',
             'namapic' => 'Namapic',
             'jabatanpic' => 'Jabatanpic',
             'telppic' => 'Telppic',
@@ -77,10 +80,8 @@ class Mitra extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getOrder()
-    {
-        return $this->hasMany(Order::className(), ['mitraid' => 'id']);
-    }
-
-    
+    public function getOrder() 
+           { 
+               return $this->hasMany(Order::className(), ['mitraid' => 'id']); 
+           } 
 }

@@ -41,6 +41,7 @@ $this->title = 'Tambah Mitra Baru';
 					<?= $form->field($model, 'namamitra')->textInput(['autofocus' => true])->label('Nama Mitra') ?>
 
 					<?= $form->field($model, 'alamatmitra') ->label('Alamat Mitra')?>
+					<?= $form->field($model, 'tgl_gajian') ->label('Tanggal Gajian')?>
 					<?= $form->field($model, 'namapic') ->label('Nama PIC Mitra')?>
 					<?= $form->field($model, 'jabatanpic') ->label('Jabatan PIC Mitra')?>
 					<?= $form->field($model, 'telppic') ->label('Telepon PIC Mitra')?>

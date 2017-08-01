@@ -62,6 +62,9 @@ $this->title = 'Form Checklist';
 							<?php if($model->ktp <> ""){ ?><button type="button" onclick="window.open('<?= Url::base() . "/checklist/".$model->ktp ?>')" class="btn btn-success">Download Lampiran Sebelumnya</button><?php }?>
 						</div>
 						<div class="col-lg-7">
+
+	<input type="checkbox" name="Delivery[hc_ktp]" value="ada"> HC KTP
+
 							<div class="help-block help-block-error "></div>
 						</div>
 					</div>
@@ -138,6 +141,32 @@ $this->title = 'Form Checklist';
 							<input type="hidden" name="Delivery[pengalamankerja]" value="<?=$model->pengalamankerja?>">
 							<input type="file" id="delivery-pengalamankerja" name="Delivery[pengalamankerja]" value="<?=$model->pengalamankerja?>">
 							<?php if($model->pengalamankerja <> ""){ ?><button type="button" onclick="window.open('<?= Url::base() . "/checklist/".$model->pengalamankerja ?>')" class="btn btn-success">Download Lampiran Sebelumnya</button><?php }?>
+						</div>
+						<div class="col-lg-7">
+							<div class="help-block help-block-error "></div>
+						</div>
+					</div>
+
+					<!- upload skck ->
+					<div class="form-group field-delivery-skck">
+						<label class="col-lg-2 control-label" for="delivery-skck">SKCK</label>
+						<div class="col-lg-3">
+							<input type="hidden" name="Delivery[skck]" value="<?=$model->skck?>">
+							<input type="file" id="delivery-skck" name="Delivery[skck]" value="<?=$model->skck?>">
+							<?php if($model->skck <> ""){ ?><button type="button" onclick="window.open('<?= Url::base() . "/checklist/".$model->skck ?>')" class="btn btn-success">Download Lampiran Sebelumnya</button><?php }?>
+						</div>
+						<div class="col-lg-7">
+							<div class="help-block help-block-error "></div>
+						</div>
+					</div>
+
+					<!- upload kwitansi member ->
+					<div class="form-group field-delivery-kwit_member">
+						<label class="col-lg-2 control-label" for="delivery-kwit_member">Kwitansi Member</label>
+						<div class="col-lg-3">
+							<input type="hidden" name="Delivery[kwit_member]" value="<?=$model->kwit_member?>">
+							<input type="file" id="delivery-kwit_member" name="Delivery[kwit_member]" value="<?=$model->kwit_member?>">
+							<?php if($model->kwit_member <> ""){ ?><button type="button" onclick="window.open('<?= Url::base() . "/checklist/".$model->kwit_member ?>')" class="btn btn-success">Download Lampiran Sebelumnya</button><?php }?>
 						</div>
 						<div class="col-lg-7">
 							<div class="help-block help-block-error "></div>
