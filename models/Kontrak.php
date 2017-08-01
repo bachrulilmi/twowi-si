@@ -11,8 +11,8 @@ use Yii;
  * @property integer $mitraid
  * @property string $lampiran
  * @property string $penjelasan
- * @property string $tahun_mulai
- * @property string $tahun_selesai
+ * @property string $tgl_mulai
+ * @property string $tgl_selesai
  * @property string $status
  * @property integer $nilai
  * @property string $nokontrak
@@ -36,8 +36,9 @@ class Kontrak extends \yii\db\ActiveRecord
         return [
             [['mitraid'], 'required'],
             [['mitraid', 'nilai'], 'integer'],
+            [['tgl_mulai', 'tgl_selesai'], 'safe'],
             [['lampiran', 'penjelasan'], 'string', 'max' => 100],
-            [['tahun_mulai', 'tahun_selesai', 'status'], 'string', 'max' => 20],
+            [['status'], 'string', 'max' => 20],
             [['nokontrak', 'ttd'], 'string', 'max' => 50],
         ];
     }
@@ -52,8 +53,8 @@ class Kontrak extends \yii\db\ActiveRecord
             'mitraid' => 'Mitraid',
             'lampiran' => 'Lampiran',
             'penjelasan' => 'Penjelasan',
-            'tahun_mulai' => 'Tahun Mulai',
-            'tahun_selesai' => 'Tahun Selesai',
+            'tgl_mulai' => 'Tgl Mulai',
+            'tgl_selesai' => 'Tgl Selesai',
             'status' => 'Status',
             'nilai' => 'Nilai',
             'nokontrak' => 'Nokontrak',

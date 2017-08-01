@@ -50,8 +50,8 @@ $this->title = 'Kontrak Baru';
     	<?= $form->field($model, 'namamitra')->textInput(['readonly' => true])->label('Nama Mitra') ?>
     	<?= $form->field($model2, 'nokontrak')->textInput(['autofocus' => true]) ->label('Nomor Kontrak/MoU')?>
     	<?= $form->field($model2, 'ttd') ->label('Penandatangan Kontrak')?>
-        <?= $form->field($model2, 'tahun_mulai')->label('Tahun Mulai Kontrak') ?>
-        <?= $form->field($model2, 'tahun_selesai')->textInput()->label('Tahun Selesai Kontrak') ?>
+        <?= $form->field($model2, 'tgl_mulai')->label('Tanggal Mulai Kontrak')->widget(\yii\widgets\MaskedInput::className(), ['clientOptions' => ['alias' =>  'yyyy-mm-dd']]) ?>
+        <?= $form->field($model2, 'tgl_selesai')->textInput()->label('Tanggal Selesai Kontrak')->widget(\yii\widgets\MaskedInput::className(), ['clientOptions' => ['alias' =>  'yyyy-mm-dd']]) ?>
 		<?= $form->field($model2, 'penjelasan') ->label('Keterangan')?>
 		<?= $form->field($model2, 'status')->dropdownList([
 			'Aktif' => 'Aktif', 
